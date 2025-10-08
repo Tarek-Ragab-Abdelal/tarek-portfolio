@@ -16,16 +16,20 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section 
+      id="contact" 
+      className="py-20 bg-background"
+      aria-labelledby="contact-heading"
+    >
       <div className="container px-4 max-w-5xl mx-auto">
-        <div className="flex items-center gap-4 mb-12 justify-center">
-          <div className="p-3 rounded-lg gradient-primary">
+        <header className="flex items-center gap-4 mb-12 justify-center">
+          <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Mail className="w-6 h-6 text-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center">
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground text-center">
             Get In Touch
           </h2>
-        </div>
+        </header>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}

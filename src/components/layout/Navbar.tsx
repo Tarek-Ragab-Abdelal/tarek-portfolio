@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import PillButton from "@/components/atomic/PillButton";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +40,8 @@ const Navbar = () => {
           ? "bg-background/80 backdrop-blur-lg shadow-soft"
           : "bg-transparent"
       }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -48,35 +49,40 @@ const Navbar = () => {
           <button
             onClick={() => scrollToSection("#home")}
             className="text-2xl font-bold gradient-primary bg-clip-text text-transparent"
+            aria-label="Tarek Ragab - Go to home section"
           >
             TR
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-8 list-none">
             {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-smooth font-medium"
-              >
-                {item.label}
-              </button>
+              <li key={item.label}>
+                <button
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary transition-smooth font-medium"
+                  aria-label={`Navigate to ${item.label} section`}
+                >
+                  {item.label}
+                </button>
+              </li>
             ))}
 
             {/* Theme Toggle */}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-          </div>
+            <li>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </button>
+            </li>
+          </ul>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 md:hidden">

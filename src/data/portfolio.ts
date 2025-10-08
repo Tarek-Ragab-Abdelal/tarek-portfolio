@@ -1,4 +1,61 @@
-export const personalInfo = {
+// Interface definitions
+export interface PersonalInfo {
+  name: string;
+  title: string;
+  summary: string;
+  email: string;
+  phone: string;
+  location: string;
+  links: {
+    github: string;
+    linkedin: string;
+    upwork: string;
+  };
+}
+
+export interface Skills {
+  [category: string]: string[];
+}
+
+export interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  achievements: string[];
+}
+
+export interface Project {
+  title: string;
+  company: string;
+  description: string;
+  technologies: string[];
+  link?: string;
+}
+
+export interface Review {
+  author: string;
+  role: string;
+  content: string;
+  rating: number;
+  company?: string;
+  project?: string;
+  image?: string;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  period: string;
+}
+
+export interface Language {
+  language: string;
+  level: string;
+}
+
+// Data exports with type annotations
+export const personalInfo: PersonalInfo = {
   name: "Tarek Ragab",
   title: "Full-Stack Software Engineer",
   summary: "Full-Stack Software Engineer with expertise in .NET, React, Azure, and scalable data-driven solutions. Proven track record in delivering high-performance web applications and data pipelines that improve efficiency, performance, and reduce operational costs.",
@@ -12,16 +69,16 @@ export const personalInfo = {
   },
 };
 
-export const skills = {
+export const skills: Skills = {
   "Programming Languages": ["C#", "C++", "JavaScript", "TypeScript", "Python", "Dart"],
   "Frameworks & Platforms": [".NET", "Node.js", "Nest.js", "React", "Flutter"],
   "Cloud & Serverless": ["Azure Function Apps", "Azure Service Bus", "Azure Web Hosting"],
   "Data & APIs": ["SQL Server", "PostgreSQL", "RESTful APIs", "Websockets", "Message Queuing"],
-  "Version Control & CI/CD": ["Git", "GitHub", "GitHub Actions"],
+  "Version Control & CI/CD": ["Git", "GitHub", "GitHub Actions", "Containerization (Docker)"],
   "Miscellaneous": ["UML", "Documentation", "Markdown", "LaTeX", "Agile", "Scrum", "Waterfall"],
 };
 
-export const experiences = [
+export const experiences: Experience[] = [
   {
     title: "Software Engineer (Remote)",
     company: "Upwork",
@@ -72,18 +129,20 @@ export const experiences = [
   },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: "Lead Generation Reporting App",
     company: "RES-VA",
     description: "Developed a reporting platform to visualize and export real-time lead and productivity metrics, cutting report generation time by 3×.",
     technologies: [".NET", "SQL", "Redis", "React", "TypeScript"],
+    link: "https://res-va-reporting.com/",
   },
   {
     title: "Loan System Reporting App",
     company: "SANAD Finance",
     description: "Implemented a reporting solution enabling 3× faster query performance and improving cashflow projection accuracy by 25%.",
     technologies: ["SQL", "Python", "Elasticsearch"],
+    link: "https://www.upwork.com/jobs/~021926964337378412890"
   },
   {
     title: "End-to-End Data Pipeline",
@@ -101,45 +160,71 @@ export const projects = [
     title: "Licencer Desktop App",
     company: "Boreal Laser Inc.",
     description: "Created a cross-platform licensing management desktop application reducing manual license issuance time by 50%.",
-    technologies: ["Flutter Desktop"],
+    technologies: ["Dart", "Flutter Desktop", "Rive Design"],
+    link:"https://www.upwork.com/jobs/~019b407c3a005474d7"
   },
   {
     title: "IoT Dashboard",
     company: "Boreal Laser Inc.",
     description: "Developed a real-time IoT monitoring dashboard improving sensor data visibility and reducing diagnostic time by 30%.",
     technologies: ["HTML", "CSS", "JavaScript"],
+    link: "https://www.upwork.com/jobs/~01f89be264ec24bfce", 
   },
 ];
 
-export const reviews = [
+export const reviews: Review[] = [
   {
-    author: "Client Name",
-    role: "Project Manager",
-    content: "Outstanding work! Tarek delivered a complex full-stack solution ahead of schedule. His expertise in .NET and React is exceptional.",
+    author: "Edward Don Adrenana",
+    role: "Product Manager",
+    company: "Boreal Laser Inc.",
+    project: "ESP32 Web Server for Industrial Gas Sensing",
+    content: "I am thoroughly impressed with the outcome of this project and the role Tarek played in its realization. The success of our collaboration has led us to continue our professional relationship with a new venture—an App version of the web server interface. I look forward to what we will achieve with this continued partnership.",
     rating: 5,
+    image: "/src/assets/clients/edward.jpg" 
   },
   {
-    author: "Client Name",
-    role: "CTO",
-    content: "Highly skilled developer with excellent communication. The Azure Function Apps implementation exceeded our expectations.",
+    author: "Chris Byard",
+    role: "CTO", 
+    company: "Signal Dynamic",
+    project: "Azure Certifate Management For IoT Devices  ",
+    content: "Tarek was great - very good and thorough communication and successfully completed the work on schedule. Will certainly use again in future.",
     rating: 5,
+    image: "/src/assets/clients/chris.jpg" 
   },
   {
-    author: "Client Name",
+    author: "Aser Nabil",
     role: "Product Owner",
-    content: "Tarek's attention to detail and problem-solving skills are remarkable. Would definitely work with him again.",
+    company: "Sudotechs", 
+    content: "Tarek's attention to detail and problem-solving skills are remarkable. He transformed our data processing capabilities and delivered a solution that handles 2x more data efficiently. Would definitely work with him again.",
     rating: 5,
   },
+  {
+    author: "Seif Mostafa",
+    role: "Senior Software Engineer",
+    company: "RES Va", 
+    content: "Tarek demonstrated exceptional expertise in system design and clean architecture principles. His work ensured scalability, maintainability, and performance, setting a strong foundation for our application. Highly recommend his skills.",
+    rating: 5,
+    // image: "/src/assets/client3.jpg" // Will fallback to initials
+  },
+  {
+    author: "Edward Don Adrenana",
+    role: "Product Manager",
+    company: "Boreal Laser Inc.",
+    project: "Desktop Licencing App",
+    content: "Our experience has been immensely positive, a reflection of both the Upwork platform's efficacy and Tarek's exceptional talent and work ethic. This project exemplifies how visionary individuals can transform ideas into exemplary solutions.",
+    rating: 5,
+    image: "/src/assets/clients/edward.jpg" 
+  }
 ];
 
-export const education = {
+export const education: Education = {
   degree: "Bachelor of Telecommunication and Electronics Engineering",
   institution: "Helwan University",
   location: "Cairo, Egypt",
   period: "2018 - 2024",
 };
 
-export const languages = [
+export const languages: Language[] = [
   { language: "Arabic", level: "Native / Bilingual" },
   { language: "English", level: "Full Professional" },
 ];

@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t border-border py-12">
+    <footer className="bg-card border-t border-border py-12" role="contentinfo">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & Copyright */}
@@ -14,41 +14,49 @@ const Footer = () => {
               {personalInfo.name}
             </p>
             <p className="text-sm text-muted-foreground">
-              © {currentYear} All rights reserved. Built with{" "}
-              <Heart className="inline w-4 h-4 text-accent fill-accent" /> using React & TypeScript
+              © {currentYear} {personalInfo.name}. All rights reserved. Built with{" "}
+              <Heart className="inline w-4 h-4 text-accent fill-accent" aria-hidden="true" /> using React & TypeScript
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex gap-4">
-            <a
-              href={personalInfo.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href={personalInfo.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href={personalInfo.links.upwork}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
-              aria-label="Upwork"
-            >
-              <Briefcase className="w-5 h-5" />
-            </a>
-          </div>
+          <nav aria-label="Social media links">
+            <ul className="flex gap-4 list-none">
+              <li>
+                <a
+                  href={personalInfo.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
+                  aria-label="GitHub Profile"
+                >
+                  <Github className="w-5 h-5" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personalInfo.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin className="w-5 h-5" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={personalInfo.links.upwork}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
+                  aria-label="Upwork Profile"
+                >
+                  <Briefcase className="w-5 h-5" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

@@ -11,7 +11,7 @@ const HeroSection = () => {
   const handleDownloadResume = () => {
     // Create a download link for the resume
     const link = document.createElement("a");
-    link.href = "/resume.pdf"; // You'll need to add the actual resume PDF
+    link.href = "/src/assets/resume.pdf"; 
     link.download = "Tarek_Ragab_Resume.pdf";
     link.click();
   };
@@ -29,6 +29,7 @@ const HeroSection = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      aria-label="Hero section introducing Tarek Ragab"
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
@@ -36,7 +37,7 @@ const HeroSection = () => {
       <div className="container relative z-10 py-16 md:py-24 px-4">
         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-16 items-center max-w-7xl mx-auto">
           {/* Left Column - Info */}
-          <div className="space-y-6 animate-fade-in order-2 lg:order-1">
+          <header className="space-y-6 animate-fade-in order-2 lg:order-1">
             <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                 {personalInfo.name}
@@ -46,16 +47,18 @@ const HeroSection = () => {
               </h2>
             </div>
 
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed" role="text">
               {personalInfo.summary}
             </p>
 
             {/* Skills Preview */}
-            <div className="flex flex-wrap gap-2 py-2">
-              {allSkills.map((skill, index) => (
-                <SkillChip key={index} skill={skill} />
+            <ul className="flex flex-wrap gap-2 py-2 list-none" aria-label="Key skills">
+              {allSkills.map((skill) => (
+                <li key={skill}>
+                  <SkillChip skill={skill} />
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-3 pt-2">
@@ -99,7 +102,7 @@ const HeroSection = () => {
                 <Briefcase className="w-5 h-5" />
               </a>
             </div>
-          </div>
+          </header>
 
           {/* Right Column - Image */}
           <div className="flex justify-center lg:justify-end animate-fade-in order-1 lg:order-2">
@@ -107,8 +110,12 @@ const HeroSection = () => {
               <div className="absolute inset-0 gradient-primary rounded-full blur-2xl opacity-20 animate-pulse" />
               <img
                 src={profileImage}
-                alt={`${personalInfo.name} - Full-Stack Software Engineer`}
+                alt={`${personalInfo.name} - Full-Stack Software Engineer based in ${personalInfo.location}`}
+                title={`${personalInfo.name} - Professional Portfolio`}
                 className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full object-cover shadow-glow border-4 border-primary/20"
+                loading="eager"
+                width="288"
+                height="288"
               />
             </div>
           </div>

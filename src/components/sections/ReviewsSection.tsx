@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import ReviewCard from "@/components/molecular/ReviewCard";
 import { reviews } from "@/data/portfolio";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
-import PillButton from "@/components/atomic/PillButton";
 
 const ReviewsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,70 +28,83 @@ const ReviewsSection = () => {
   };
 
   return (
-    <section id="reviews" className="py-20 bg-muted/30">
-      <div className="container px-4 max-w-5xl mx-auto">
-        <div className="flex items-center gap-4 mb-12 justify-center">
-          <div className="p-3 rounded-lg gradient-primary">
+    <section 
+      id="reviews" 
+      className="py-20 bg-gradient-to-br from-background via-muted/30 to-background relative overflow-hidden"
+      aria-labelledby="reviews-heading"
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-5" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container px-4 max-w-6xl mx-auto relative">
+        {/* Section Header */}
+        <header className="flex items-center gap-4 mb-12 justify-center">
+          <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Star className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center">
-            Client Reviews
+          <h2 id="reviews-heading" className="text-4xl md:text-5xl font-bold text-foreground text-center">
+            Client Reviews & Testimonials
           </h2>
-        </div>
+        </header>
 
         <div className="relative">
-          {/* Carousel */}
-          <div className="overflow-hidden">
+          {/* Carousel Container */}
+          <div className="overflow-hidden rounded-2xl">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {reviews.map((review, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
-                  <ReviewCard {...review} />
+              {reviews.map((review) => (
+                <div key={`${review.author}-${review.company || 'unknown'}`} className="w-full flex-shrink-0 px-6">
+                  <div className="flex justify-center">
+                    <ReviewCard {...review} />
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-8">
-            <PillButton
-              variant="ghost"
-              size="sm"
+          {/* Simple Navigation Controls */}
+          <div className="flex items-center justify-center gap-8 mt-8">
+            {/* Previous Button */}
+            <button
               onClick={goToPrevious}
+              className="p-2 rounded-full border border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-200"
               aria-label="Previous review"
             >
-              <ChevronLeft className="w-5 h-5" />
-            </PillButton>
+              <ChevronLeft className="w-5 h-5 text-primary" />
+            </button>
 
             {/* Dots Indicator */}
             <div className="flex items-center gap-2">
-              {reviews.map((_, index) => (
+              {reviews.map((review, index) => (
                 <button
-                  key={index}
+                  key={`${review.author}-dot`}
                   onClick={() => {
                     setIsAutoPlaying(false);
                     setCurrentIndex(index);
                   }}
-                  className={`w-2 h-2 rounded-full transition-smooth ${
+                  className={`rounded-full transition-all duration-200 ${
                     index === currentIndex
-                      ? "bg-primary w-8"
-                      : "bg-muted-foreground"
+                      ? "bg-primary w-3 h-3"
+                      : "bg-muted-foreground/40 w-2 h-2 hover:bg-muted-foreground/60"
                   }`}
                   aria-label={`Go to review ${index + 1}`}
                 />
               ))}
             </div>
 
-            <PillButton
-              variant="ghost"
-              size="sm"
+            {/* Next Button */}
+            <button
               onClick={goToNext}
+              className="p-2 rounded-full border border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-200"
               aria-label="Next review"
             >
-              <ChevronRight className="w-5 h-5" />
-            </PillButton>
+              <ChevronRight className="w-5 h-5 text-primary" />
+            </button>
           </div>
         </div>
       </div>

@@ -4,28 +4,34 @@ import { Briefcase } from "lucide-react";
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-20 bg-background">
+    <section 
+      id="experience" 
+      className="py-20 bg-background"
+      aria-labelledby="experience-heading"
+    >
       <div className="container px-4 max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 rounded-lg gradient-primary">
+        <header className="flex items-center gap-4 mb-12">
+          <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Briefcase className="w-6 h-6 text-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 id="experience-heading" className="text-4xl md:text-5xl font-bold text-foreground">
             Work Experience
           </h2>
-        </div>
+        </header>
 
-        <div className="space-y-6">
+        <ol className="space-y-6 list-none" aria-label="Professional work experience">
           {experiences.map((experience, index) => (
-            <div
-              key={index}
+            <li
+              key={`${experience.company}-${experience.title}`}
               className="animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <ExperienceCard {...experience} />
-            </div>
+              <article>
+                <ExperienceCard {...experience} />
+              </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

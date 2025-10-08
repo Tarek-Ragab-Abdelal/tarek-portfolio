@@ -5,36 +5,45 @@ import { Lightbulb } from "lucide-react";
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section 
+      id="skills" 
+      className="py-20 bg-background"
+      aria-labelledby="skills-heading"
+    >
       <div className="container px-4 max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 rounded-lg gradient-primary">
+        <header className="flex items-center gap-4 mb-12">
+          <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Lightbulb className="w-6 h-6 text-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 id="skills-heading" className="text-4xl md:text-5xl font-bold text-foreground">
             Skills & Expertise
           </h2>
-        </div>
+        </header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none" aria-label="Technical skills and expertise">
           {Object.entries(skills).map(([category, skillList], index) => (
-            <GenericCard
-              key={index}
-              variant="elevated"
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="text-xl font-semibold text-primary mb-4">
-                {category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skillList.map((skill, skillIndex) => (
-                  <SkillChip key={skillIndex} skill={skill} variant="default" />
-                ))}
-              </div>
-            </GenericCard>
+            <li key={category}>
+              <GenericCard
+                variant="elevated"
+                className="animate-fade-in h-full"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <article>
+                  <h3 className="text-xl font-semibold text-primary mb-4">
+                    {category}
+                  </h3>
+                  <ul className="flex flex-wrap gap-2 list-none" aria-label={`${category} skills`}>
+                    {skillList.map((skill) => (
+                      <li key={skill}>
+                        <SkillChip skill={skill} variant="default" />
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </GenericCard>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
