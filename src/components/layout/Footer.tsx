@@ -1,5 +1,5 @@
 import { personalInfo } from "@/data/portfolio";
-import { Github, Linkedin, Briefcase } from "lucide-react";
+import { Github, Linkedin, Globe } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,7 +51,7 @@ const Footer = () => {
                   className="group flex items-center justify-center w-12 h-12 rounded-xl bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth hover:shadow-glow hover:scale-105"
                   aria-label="Upwork Profile"
                 >
-                  <Briefcase className="w-6 h-6 group-hover:scale-110 transition-smooth" aria-hidden="true" />
+                  <Globe className="w-6 h-6 group-hover:scale-110 transition-smooth" aria-hidden="true" />
                 </a>
               </li>
             </ul>

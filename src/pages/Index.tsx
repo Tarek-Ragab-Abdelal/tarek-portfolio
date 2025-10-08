@@ -30,7 +30,14 @@ const Index = () => {
       <SEOHead
         title={`${personalInfo.name} - ${personalInfo.title} | Portfolio`}
         description={`${personalInfo.summary} Based in ${personalInfo.location}. Available for freelance projects and full-time opportunities.`}
-        keywords="Full-Stack Developer, Software Engineer, .NET Developer, React Developer, Azure Cloud Engineer, TypeScript Expert, C# Developer, Cairo Egypt, Remote Work, Freelancer, Upwork Developer"
+        keywords="
+          Tarek, Tarek Ragab, Tarek Ragab Portfolio, Eng Tarek Ragba, Eng Tarek, Eng Tarek Ragab Portfolio, Eng. Taerek Ragab, 
+          Tarek Ragab CV, Tarek Ragab Resume, Tarek Ragab Software Engineer, Tarek Ragab Developer,
+          Backend Developer, Frontend Developer, Web Developer, IoT Developer, 
+          Full-Stack Developer, Software Engineer, 
+          .NET Developer, React Developer, Azure Cloud Engineer, TypeScript Expert, C# Developer, 
+          Cairo, Cairo Egypt, Remote Work, 
+          Freelancer, Upwork Developer"
         jsonLd={combinedStructuredData}
       />
       <div className="min-h-screen">

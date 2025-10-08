@@ -14,7 +14,7 @@ interface SEOHeadProps {
 const SEOHead = ({
   title = `${personalInfo.name} - ${personalInfo.title}`,
   description = personalInfo.summary,
-  keywords = "Full-Stack Software Engineer, .NET Developer, React Developer, Azure Cloud, TypeScript, C#, Software Engineer Cairo, Portfolio, Tarek Ragab",
+  keywords = "Full-Stack Software Engineer, .NET Developer, React Developer, Azure Cloud, TypeScript, C#, Software Engineer Cairo, Portfolio, Tarek Ragab, Freelancer, Upwork, Remote Work, Software Developer, Web Developer, IoT Developer, Backend Developer, Frontend Developer, Software, Engineer Egypt, Cairo Egypt",
   image = "/assets/profile.jpg",
   url = window.location.href,
   type = "website",
