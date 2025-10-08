@@ -14,10 +14,30 @@ const ProjectsSection = () => {
           <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Code2 className="w-6 h-6 text-primary-foreground" />
           </div>
-          <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold text-foreground">
-            Featured Projects
-          </h2>
+          <div>
+            <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold text-foreground">
+              Featured Software Development Projects
+            </h2>
+            <h3 className="text-xl text-muted-foreground mt-2">
+              Full-Stack Applications & Custom Software Solutions
+            </h3>
+          </div>
         </header>
+
+        {/* SEO Content */}
+        <div className="mb-8">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+            Discover a portfolio of innovative software projects spanning web development, data processing, 
+            IoT solutions, and enterprise applications. Each project demonstrates expertise in modern 
+            technologies and best practices for scalable software architecture.
+          </p>
+          <p className="sr-only">
+            Featured projects include lead generation reporting systems, loan management platforms, 
+            end-to-end data pipelines, human resources management systems, desktop licensing applications, 
+            and real-time IoT dashboards. Technologies used include .NET framework, React, TypeScript, 
+            Python, Azure Function Apps, SQL databases, Flutter, Node.js, and embedded systems.
+          </p>
+        </div>
 
         <ul className="grid md:grid-cols-2 gap-6 list-none" aria-label="Portfolio projects">
           {projects.map((project, index) => (

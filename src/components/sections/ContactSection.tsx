@@ -26,10 +26,30 @@ const ContactSection = () => {
           <div className="p-3 rounded-lg gradient-primary" aria-hidden="true">
             <Mail className="w-6 h-6 text-primary-foreground" />
           </div>
-          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground text-center">
-            Get In Touch
-          </h2>
+          <div className="text-center">
+            <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground">
+              Contact for Software Development Services
+            </h2>
+            <h3 className="text-xl text-muted-foreground mt-2">
+              Get In Touch for Project Consultation & Collaboration
+            </h3>
+          </div>
         </header>
+
+        {/* SEO Content */}
+        <div className="mb-8 text-center">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-3xl mx-auto">
+            Ready to start your next software project? Contact Tarek Ragab for professional software 
+            development services, technical consulting, and custom application solutions. Available 
+            for both freelance projects and full-time opportunities worldwide.
+          </p>
+          <p className="sr-only">
+            Professional software engineer available for hire. Specializing in full-stack web development, 
+            .NET applications, React frontend development, Azure cloud solutions, IoT implementations, 
+            and data processing systems. Contact for project consultation, technical architecture planning, 
+            and custom software development services. Based in Cairo, Egypt with remote work capabilities.
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}

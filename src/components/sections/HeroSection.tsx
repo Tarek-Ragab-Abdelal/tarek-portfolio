@@ -1,12 +1,11 @@
-import { Download, Mail, Github, Linkedin, Briefcase } from "lucide-react";
+import { Download, Mail, Github, Linkedin, Globe } from "lucide-react";
 import PillButton from "@/components/atomic/PillButton";
 import SkillChip from "@/components/molecular/SkillChip";
-import { personalInfo, skills } from "@/data/portfolio";
+import { personalInfo, coreSkills } from "@/data/portfolio";
 import profileImage from "@/assets/profile.jpg";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
-  const allSkills = Object.values(skills).flat().slice(0, 12);
 
   const handleDownloadResume = () => {
     // Create a download link for the resume
@@ -43,17 +42,36 @@ const HeroSection = () => {
                 {personalInfo.name}
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium gradient-primary bg-clip-text text-transparent">
-                {personalInfo.title}
+                {personalInfo.title} | Full-Stack Developer
               </h2>
+              <h3 className="text-lg md:text-xl text-muted-foreground font-medium">
+                Software Engineer based in {personalInfo.location}
+              </h3>
             </div>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed" role="text">
               {personalInfo.summary}
             </p>
+            
+            {/* Additional SEO-rich content */}
+            <div className="space-y-3 pt-4 hidden">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Available for remote software development projects, technical consulting, and full-time opportunities. 
+                Specialized in custom web application development, enterprise software solutions, and cloud-based architectures.
+              </p>
+              <p className="sr-only">
+                Professional software engineer with 5+ years of experience in full-stack development. Expert in Microsoft 
+                technologies including C# programming, ASP.NET Core, Entity Framework, and Azure cloud services. 
+                Frontend expertise includes React.js, TypeScript, HTML5, CSS3, and modern JavaScript frameworks. 
+                Backend development skills encompass Node.js, RESTful API design, database management with SQL Server 
+                and PostgreSQL, and microservices architecture. DevOps experience with Docker, CI/CD pipelines, 
+                and automated deployment processes.
+              </p>
+            </div>
 
             {/* Skills Preview */}
             <ul className="flex flex-wrap gap-2 py-2 list-none" aria-label="Key skills">
-              {allSkills.map((skill) => (
+              {coreSkills.map((skill) => (
                 <li key={skill}>
                   <SkillChip skill={skill} />
                 </li>
@@ -99,7 +117,7 @@ const HeroSection = () => {
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
                 aria-label="Upwork Profile"
               >
-                <Briefcase className="w-5 h-5" />
+                <Globe className="w-5 h-5" />
               </a>
             </div>
           </header>

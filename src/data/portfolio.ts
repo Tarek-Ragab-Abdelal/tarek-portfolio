@@ -57,8 +57,8 @@ export interface Language {
 // Data exports with type annotations
 export const personalInfo: PersonalInfo = {
   name: "Tarek Ragab",
-  title: "Full-Stack Software Engineer",
-  summary: "Full-Stack Software Engineer with expertise in .NET, React, Azure, and scalable data-driven solutions. Proven track record in delivering high-performance web applications and data pipelines that improve efficiency, performance, and reduce operational costs.",
+  title: "Full-Stack Software Engineer & Azure Cloud Developer",
+  summary: "Experienced Full-Stack Software Engineer specializing in .NET development, React applications, Azure cloud solutions, and scalable data-driven systems. Expert in building high-performance web applications, IoT implementations, and enterprise-grade software solutions. Proven track record in delivering custom software development projects that improve business efficiency, optimize performance, and reduce operational costs for clients worldwide.",
   email: "tarek.madany113@gmail.com",
   phone: "+201090477381",
   location: "Cairo, Egypt",
@@ -77,6 +77,8 @@ export const skills: Skills = {
   "Version Control & CI/CD": ["Git", "GitHub", "GitHub Actions", "Containerization (Docker)"],
   "Miscellaneous": ["UML", "Documentation", "Markdown", "LaTeX", "Agile", "Scrum", "Waterfall"],
 };
+
+export const coreSkills: string[] = ["Web Development", "SQL Databases", "Cloud Solutions", "System Design", "Data Pipelines", "API Design", "System Architecture"];
 
 export const experiences: Experience[] = [
   {
