@@ -177,7 +177,7 @@ export const projects: Project[] = [
 export const reviews: Review[] = [
   {
     author: "Edward Don Adrenana",
-    role: "Product Manager",
+    role: "Senior Software Engineer",
     company: "Boreal Laser Inc.",
     project: "ESP32 Web Server for Industrial Gas Sensing",
     content: "I am thoroughly impressed with the outcome of this project and the role Tarek played in its realization. The success of our collaboration has led us to continue our professional relationship with a new venture—an App version of the web server interface. I look forward to what we will achieve with this continued partnership.",
@@ -206,16 +206,14 @@ export const reviews: Review[] = [
     company: "RES Va", 
     content: "Tarek demonstrated exceptional expertise in system design and clean architecture principles. His work ensured scalability, maintainability, and performance, setting a strong foundation for our application. Highly recommend his skills.",
     rating: 5,
-    // image: "/src/assets/client3.jpg" // Will fallback to initials
   },
   {
-    author: "Edward Don Adrenana",
-    role: "Product Manager",
+    author: "Tim Ho",
+    role: "Product Owner",
     company: "Boreal Laser Inc.",
     project: "Desktop Licencing App",
     content: "Our experience has been immensely positive, a reflection of both the Upwork platform's efficacy and Tarek's exceptional talent and work ethic. This project exemplifies how visionary individuals can transform ideas into exemplary solutions.",
     rating: 5,
-    image: "/src/assets/clients/edward.jpg" 
   }
 ];
 

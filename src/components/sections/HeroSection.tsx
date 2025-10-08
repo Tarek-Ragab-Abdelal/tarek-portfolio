@@ -42,7 +42,7 @@ const HeroSection = () => {
                 {personalInfo.name}
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium gradient-primary bg-clip-text text-transparent">
-                {personalInfo.title} | Full-Stack Developer
+                FullStack
               </h2>
               <h3 className="text-lg md:text-xl text-muted-foreground font-medium">
                 Software Engineer based in {personalInfo.location}
