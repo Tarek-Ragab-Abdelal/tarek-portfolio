@@ -15,7 +15,7 @@ import {
   generateWebsiteStructuredData,
   generateFAQStructuredData 
 } from "@/components/SEO/StructuredData";
-import { personalInfo } from "@/data/portfolio";
+import { personalInfo, coreSkills } from "@/data/portfolio";
 
 const Index = () => {
   const combinedStructuredData = {
@@ -32,9 +32,7 @@ const Index = () => {
       <SEOHead
         title={`${personalInfo.name} - ${personalInfo.title}`}
         description={
-          `Tarek Ragab, ${personalInfo.summary} Based in ${personalInfo.location}. 
-          Available for freelance projects and full-time opportunities. 
-          Expertise in .NET, React, Azure, TypeScript, Software, Web Development, Backend, Node Js, Nest JS, Dotnet, IoT, Service bus, Message Queuing, Web Sockets, others.`}
+          `Tarek Ragab, Software Engineer focused on ${coreSkills.join(',')} Based in ${personalInfo.location}.`}
         image="/src/assets/profile.jpg"
         url={window.location.href}
 
