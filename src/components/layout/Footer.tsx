@@ -1,6 +1,6 @@
 import { personalInfo } from "@/data/portfolio";
 import { SiLinkedin, SiGithub, SiUpwork } from "react-icons/si";
-import { SlArrowUp} from "react-icons/sl";
+import { AiOutlineArrowUp } from "react-icons/ai";
 import PillButton from "../atomic/PillButton";
 
 
@@ -11,9 +11,9 @@ const Footer = () => {
     <footer className="bg-card border-t border-border py-16" role="contentinfo">
       <div className="container mx-auto px-4">
         {/* Go to Top */}
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="mb-8 align-middle text-center ">
             <PillButton onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} variant="outline">
-              <SlArrowUp className="w-5 h-5 mr-2" />
+              <AiOutlineArrowUp className="w-5 h-5 mr-2" />
               Back To Top
             </PillButton>  
         </div>

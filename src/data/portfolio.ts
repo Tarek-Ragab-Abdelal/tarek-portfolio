@@ -22,6 +22,7 @@ export interface Experience {
   company: string;
   period: string;
   achievements: string[];
+  link?: string;
 }
 
 export interface Project {
@@ -58,7 +59,7 @@ export interface Language {
 export const personalInfo: PersonalInfo = {
   name: "Tarek Ragab",
   title: "Full-Stack Software Engineer & Azure Cloud Developer",
-  summary: "Experienced Full-Stack Software Engineer specializing in .NET development, React applications, Azure cloud solutions, and scalable data-driven systems. Expert in building high-performance web applications, IoT implementations, and enterprise-grade software solutions. Proven track record in delivering custom software development projects that improve business efficiency, optimize performance, and reduce operational costs for clients worldwide.",
+  summary: "Full-Stack Software Engineer with 4+ years of experience in .NET, React, Azure, and scalable data-driven solutions. Proven track record in delivering 40+ high-performance web applications and data pipelines that improve efficiency, performance, and reduce operational costs.",
   email: "tarek.madany113@gmail.com",
   phone: "+201090477381",
   location: "Cairo, Egypt",
@@ -89,29 +90,35 @@ export const experiences: Experience[] = [
     title: "Software Engineer (Remote)",
     company: "Upwork",
     period: "Jan 2023 - Present",
+    link: "https://www.upwork.com/freelancers/~01f068ac7a77a08223",
     achievements: [
-      "Delivered full-stack solutions using C#, .NET, IoT integrations, and SQL Server for diverse global clients.",
-      "Built automated workflows with Python and Azure Function Apps, reducing data collection time by 10x and cutting manual workload.",
-      "Partnered closely with clients to align project scope and deliverables, achieving 95%+ on-time delivery.",
+      "Delivered 10+ large-scale projects, starting from system design, implementation, documentation, and maintenance.",
+      "Provided consultation and guidance to help diverse companies build and maintain long-term projects.",
+      "Delivered different dashboards to visualize core data in real-time and along to alerting systems.",
+      "Designed and delivered Database migration across different database engines.",
     ],
   },
   {
     title: "Full-Stack Software Engineer",
     company: "RES-VA",
+    link: "https://res-va.com/",
     period: "Jun 2024 - Present",
     achievements: [
-      "Delivered 5+ large-scale projects, starting from system design, implementation, documentation, and maintenance.",
-      "Built and deployed real-time data applications.",
-      "Optimized SQL queries and backend logic, improving API performance by 35% and reducing response latency by 40%.",
+      "Delivered full-stack solutions using React Js, C#, .NET, and SQL Server, easing the KPI tracking and data management process.",
+      "Built automated workflows with Azure Function Apps and Service Bus, reducing data collection time by 10x and cutting manual workload.",
+      "Designed and implemented automation pipelines to ease deployment and maintainability of the ongoing apps.",
+      "Creation of pre-compiled SQL views, reducing response latency by 40%.",
+      "Collaborated with CTO and Senior Software Engineer to design detailed ERD for a multi-tenant file management system.",
     ],
   },
   {
-    title: "Mid-Level IoT Firmware Engineer",
+    title: "Mid-Level IoT Firmware Engineer (Full-time)",
     company: "SudoTechs",
     period: "Jun 2022 - Oct 2024",
+    link: "https://sudotechs.com/",
     achievements: [
       "Designed IoT systems architecture and implemented firmware for a variety of micro-controllers, supporting 20+ industrial devices.",
-      "Optimized embedded workflows, reducing device data transmission delays by 25%.",
+      "Optimized embedded workflows, reducing device data transmission delays by 80%.",
       "Delivered customized IoT solutions that scaled to handle 2× more connected devices.",
     ],
   },
@@ -119,15 +126,17 @@ export const experiences: Experience[] = [
     title: "IoT Instructor (Part-time)",
     company: "CIC, Cairo",
     period: "Oct 2022 - Oct 2023",
+    link: "https://www.cic-cairo.edu.eg/",
     achievements: [
-      "Designed and delivered a practical IoT curriculum for over 100 students.",
-      "Increased course satisfaction by 30% by incorporating real-world case studies and hands-on device labs.",
+      "Designed and delivered a practical IoT curriculum for over 200 students.",
+      "Delivered more than 80 Hours of practical sessions across different workshops.",
     ],
   },
   {
-    title: "Digital Fabrication Trainee",
+    title: "Digital Fabrication Trainee (Internship)",
     company: "Sector B5",
     period: "Jun 2021 - Sep 2021",
+    link: "https://www.linkedin.com/company/sector-b5/posts/?feedView=all",
     achievements: [
       "Gained practical experience with 3D printing (FDM, SLA) and CNC machinery.",
       "Designed and built an autonomous maze-solver robot that completed obstacle courses 20% faster than baseline models.",
@@ -140,27 +149,27 @@ export const projects: Project[] = [
     title: "Lead Generation Reporting App",
     company: "RES-VA",
     description: "Developed a reporting platform to visualize and export real-time lead and productivity metrics, cutting report generation time by 3×.",
-    technologies: [".NET", "SQL", "Redis", "React", "TypeScript", "Azure Function Apps", "Azure Service Bus"],
+    technologies: [".NET", "SQL", "Redis", "React", "TypeScript", "Azure Function Apps", "Azure Service Bus", "Dockers"],
     link: "https://res-va-reporting.com/",
   },
   {
     title: "Loan System Reporting App",
     company: "SANAD Finance",
     description: "Implemented a reporting solution enabling 3× faster query performance and improving cashflow projection accuracy by 25%.",
-    technologies: ["SQL", "Python", "Elasticsearch"],
+    technologies: ["SQL", "Python", "Elasticsearch", "Docker"],
     link: "https://www.upwork.com/jobs/~021926964337378412890"
   },
   {
     title: "End-to-End Data Pipeline",
     company: "RES-VA",
     description: "Built a scalable Python-based pipeline processing 2× more data and automating ingestion, transformation, and export of CRM and dialer records.",
-    technologies: ["Python", "Azure Function Apps"],
+    technologies: ["Python", "Azure Function Apps", "Azure Service Bus"],
   },
   {
     title: "Human Resources Management",
     company: "Future of Egypt",
     description: "Developed a responsive HR management platform boosting reporting efficiency by 40%.",
-    technologies: ["Flutter Web", "Node.js", "SQL"],
+    technologies: ["Flutter Web", "Node.js", "SQL Server", "Views and Procdures"],
   },
   {
     title: "Licencer Desktop App",
@@ -172,21 +181,40 @@ export const projects: Project[] = [
   {
     title: "IoT Dashboard",
     company: "Boreal Laser Inc.",
-    description: "Developed a real-time IoT monitoring dashboard improving sensor data visibility and reducing diagnostic time by 30%.",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    description: "Developed a real-time IoT monitoring dashboard using Vanilla HTML, CSS, JS, improving sensor data visibility and reducing diagnostic time by 30%.",
+    technologies: ["HTML", "CSS", "JavaScript", "C++", "ESP32"],
     link: "https://www.upwork.com/jobs/~01f89be264ec24bfce", 
   },
+  {
+    title: "Industrial Web Dashboard",
+    company: "Graduation Project",
+    description: "Built an industrial process visualization tool using Node.js, React.js, boosting operational response times.",
+    technologies: ["Node.js", "React.js", "GitHub Acions"],
+  },
+  {
+    title: "Maze Solver Robot pi-bot",
+    company: "Sector B5",
+    description: "Designed and programmed an autonomous maze-solving robot using C++, achieving a 25% improvement in navigation speed.",
+    technologies: ["C++", "Arduino", "Robotics"],
+  },
 ];
+
+
+import chrisImg from '@/assets/clients/chris.jpg';
+import edwardImg from '@/assets/clients/edward.jpg';
+import seifImg from '@/assets/clients/seif.jpg';
+import zaneImg from '@/assets/clients/zane.jpg';
+
 
 export const reviews: Review[] = [
   {
     author: "Edward Don Adrenana",
     role: "Senior Software Engineer",
     company: "Boreal Laser Inc.",
-    project: "ESP32 Web Server for Industrial Gas Sensing",
+    project: "Industrial Gas Sensing Dashboard",
     content: "I am thoroughly impressed with the outcome of this project and the role Tarek played in its realization. The success of our collaboration has led us to continue our professional relationship with a new venture—an App version of the web server interface. I look forward to what we will achieve with this continued partnership.",
     rating: 5,
-    image: "/src/assets/clients/edward.jpg" 
+    image: edwardImg
   },
   {
     author: "Chris Byard",
@@ -195,8 +223,16 @@ export const reviews: Review[] = [
     project: "Azure Certifate Management For IoT Devices  ",
     content: "Tarek was great - very good and thorough communication and successfully completed the work on schedule. Will certainly use again in future.",
     rating: 5,
-    image: "/src/assets/clients/chris.jpg" 
+    image: chrisImg
   },
+  // {
+  //   author: "Zane White",
+  //   role: "CEO",
+  //   company: "RES Va", 
+  //   content: "Tarek is a highly skilled software engineer with a strong work ethic and attention to detail. He consistently delivers high-quality work on time and within budget. His expertise in system design and architecture has been invaluable to our projects. I highly recommend Tarek for any software development needs.",
+  //   rating: 5,
+  //   image: zaneImg
+  // },
   {
     author: "Aser Nabil",
     role: "Product Owner",
@@ -210,6 +246,7 @@ export const reviews: Review[] = [
     company: "RES Va", 
     content: "Tarek demonstrated exceptional expertise in system design and clean architecture principles. His work ensured scalability, maintainability, and performance, setting a strong foundation for our application. Highly recommend his skills.",
     rating: 5,
+    image: seifImg
   },
   {
     author: "Tim Ho",
