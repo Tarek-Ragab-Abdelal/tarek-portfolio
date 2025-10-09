@@ -110,13 +110,13 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
+          <div className="md:hidden py-4 animate-fade-in bg-background/95 backdrop-blur-md border-t border-border/50 rounded-b-lg shadow-lg">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-foreground hover:text-primary transition-smooth font-medium text-left px-4 py-2"
+                  className="text-foreground hover:text-primary transition-smooth font-medium text-left px-4 py-2 hover:bg-muted/50 rounded-md mx-2"
                 >
                   {item.label}
                 </button>

@@ -78,7 +78,11 @@ export const skills: Skills = {
   "Miscellaneous": ["UML", "Documentation", "Markdown", "LaTeX", "Agile", "Scrum", "Waterfall"],
 };
 
-export const coreSkills: string[] = ["Web Development", "SQL Databases", "Cloud Solutions", "System Design", "Data Pipelines", "API Design", "System Architecture"];
+export const coreSkills: string[] = [
+    "Cross platform Applications", "Databases", "Cloud Solutions", 
+    "Dashboard Development", "Workflows and Automation", 
+    "System Design", "Software Architecture", 
+];
 
 export const experiences: Experience[] = [
   {
@@ -136,7 +140,7 @@ export const projects: Project[] = [
     title: "Lead Generation Reporting App",
     company: "RES-VA",
     description: "Developed a reporting platform to visualize and export real-time lead and productivity metrics, cutting report generation time by 3×.",
-    technologies: [".NET", "SQL", "Redis", "React", "TypeScript"],
+    technologies: [".NET", "SQL", "Redis", "React", "TypeScript", "Azure Function Apps", "Azure Service Bus"],
     link: "https://res-va-reporting.com/",
   },
   {
