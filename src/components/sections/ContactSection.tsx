@@ -28,22 +28,19 @@ const ContactSection = () => {
           </div>
           <div className="text-center">
             <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold text-foreground">
-              Contact for Software Development Services
+              Contact Me
             </h2>
-            <h3 className="text-xl text-muted-foreground mt-2">
-              Get In Touch for Project Consultation & Collaboration
-            </h3>
           </div>
         </header>
 
         {/* SEO Content */}
-        <div className="mb-8 text-center">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-3xl mx-auto">
+        <div className="sr-only">
+          <p>
             Ready to start your next software project? Contact Tarek Ragab for professional software 
             development services, technical consulting, and custom application solutions. Available 
             for both freelance projects and full-time opportunities worldwide.
           </p>
-          <p className="sr-only">
+          <p>
             Professional software engineer available for hire. Specializing in full-stack web development, 
             .NET applications, React frontend development, Azure cloud solutions, IoT implementations, 
             and data processing systems. Contact for project consultation, technical architecture planning, 
@@ -53,12 +50,12 @@ const ContactSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 sr">
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Let's Work Together
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="sr-only">
                 I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your vision. Feel free to reach out!
               </p>

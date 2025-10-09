@@ -1,4 +1,5 @@
-import { Download, Mail, Github, Linkedin, Globe } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
+import { SiLinkedin, SiGithub, SiUpwork } from "react-icons/si";
 import PillButton from "@/components/atomic/PillButton";
 import SkillChip from "@/components/molecular/SkillChip";
 import { personalInfo, coreSkills } from "@/data/portfolio";
@@ -15,8 +16,8 @@ const HeroSection = () => {
     link.click();
   };
 
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  const handleWorkTogether = () => {
+    window.open(personalInfo.links.upwork, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -54,12 +55,12 @@ const HeroSection = () => {
             </p>
             
             {/* Additional SEO-rich content */}
-            <div className="space-y-3 pt-4 hidden">
-              <p className="text-sm text-muted-foreground leading-relaxed">
+            <div className="space-y-3 pt-4 sr-only">
+              <p>
                 Available for remote software development projects, technical consulting, and full-time opportunities. 
                 Specialized in custom web application development, enterprise software solutions, and cloud-based architectures.
               </p>
-              <p className="sr-only">
+              <p>
                 Professional software engineer with 5+ years of experience in full-stack development. Expert in Microsoft 
                 technologies including C# programming, ASP.NET Core, Entity Framework, and Azure cloud services. 
                 Frontend expertise includes React.js, TypeScript, HTML5, CSS3, and modern JavaScript frameworks. 
@@ -80,14 +81,15 @@ const HeroSection = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-3 pt-2">
-              <PillButton variant="gradient" size="lg" onClick={handleDownloadResume}>
+              <PillButton variant="gradient" size="lg" onClick={handleWorkTogether}>
+                <ExternalLink className="w-5 h-5" />
+                Let's Collaborate
+              </PillButton>
+              <PillButton variant="outline" size="lg" onClick={handleDownloadResume}>
                 <Download className="w-5 h-5" />
                 Download Resume
               </PillButton>
-              <PillButton variant="outline" size="lg" onClick={scrollToContact}>
-                <Mail className="w-5 h-5" />
-                Contact Me
-              </PillButton>
+              
             </div>
 
             {/* Social Links */}
@@ -99,7 +101,7 @@ const HeroSection = () => {
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
                 aria-label="GitHub Profile"
               >
-                <Github className="w-5 h-5" />
+                <SiGithub className="w-5 h-5" />
               </a>
               <a
                 href={personalInfo.links.linkedin}
@@ -108,7 +110,7 @@ const HeroSection = () => {
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin className="w-5 h-5" />
+                <SiLinkedin className="w-5 h-5" />
               </a>
               <a
                 href={personalInfo.links.upwork}
@@ -117,7 +119,7 @@ const HeroSection = () => {
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-smooth"
                 aria-label="Upwork Profile"
               >
-                <Globe className="w-5 h-5" />
+                <SiUpwork className="w-5 h-5" />
               </a>
             </div>
           </header>

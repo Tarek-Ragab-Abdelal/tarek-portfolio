@@ -17,22 +17,19 @@ const SkillsSection = () => {
           </div>
           <div>
             <h2 id="skills-heading" className="text-4xl md:text-5xl font-bold text-foreground">
-              Technical Skills & Professional Expertise
+              Technical Skills
             </h2>
-            <h3 className="text-xl text-muted-foreground mt-2">
-              Programming Languages, Frameworks & Development Tools
-            </h3>
           </div>
         </header>
 
         {/* SEO Content */}
-        <div className="mb-8">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+        <div className="sr-only">
+          <p>
             Comprehensive technical expertise across modern programming languages, frameworks, and development 
             tools. Specialized in full-stack development with strong foundation in both backend and frontend 
             technologies, cloud platforms, and DevOps practices.
           </p>
-          <p className="sr-only">
+          <p>
             Expert-level skills in C#, .NET framework, JavaScript, TypeScript, React, Node.js, Python, 
             Azure cloud services, SQL databases, Git version control, Docker containerization, and 
             modern development methodologies including Agile and Scrum practices.

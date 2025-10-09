@@ -47,22 +47,19 @@ const ReviewsSection = () => {
           </div>
           <div className="text-center">
             <h2 id="reviews-heading" className="text-4xl md:text-5xl font-bold text-foreground">
-              Client Reviews & Professional Testimonials
+              Client Reviews
             </h2>
-            <h3 className="text-xl text-muted-foreground mt-2">
-              Feedback from Satisfied Clients & Project Partners
-            </h3>
           </div>
         </header>
 
         {/* SEO Content */}
-        <div className="mb-8 text-center">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-4 max-w-3xl mx-auto">
+        <div className="sr-only">
+          <p>
             Read authentic testimonials from clients who have experienced exceptional software development 
             services. These reviews highlight successful project deliveries, technical expertise, and 
             professional collaboration across various industries and platforms.
           </p>
-          <p className="sr-only">
+          <p>
             Client testimonials from Upwork projects, corporate partnerships, and freelance engagements. 
             Featuring reviews from product managers, CTOs, senior engineers, and business owners who have 
             worked with Tarek Ragab on software development, IoT solutions, web applications, and 
