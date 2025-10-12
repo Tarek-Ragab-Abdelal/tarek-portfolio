@@ -11,7 +11,7 @@ const HeroSection = () => {
   const handleDownloadResume = () => {
     // Create a download link for the resume
     const link = document.createElement("a");
-    link.href = "/src/assets/resume.pdf"; 
+    link.href = "/resume.pdf"; 
     link.download = "Tarek_Ragab_Resume.pdf";
     link.click();
   };

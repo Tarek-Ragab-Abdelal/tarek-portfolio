@@ -210,7 +210,7 @@ export const reviews: Review[] = [
   {
     author: "Edward Don Adrenana",
     role: "Senior Software Engineer",
-    company: "Boreal Laser Inc.",
+    company: "Boreal Laser Inc.  (Upwork)",
     project: "Industrial Gas Sensing Dashboard",
     content: "I am thoroughly impressed with the outcome of this project and the role Tarek played in its realization. The success of our collaboration has led us to continue our professional relationship with a new venture—an App version of the web server interface. I look forward to what we will achieve with this continued partnership.",
     rating: 5,
@@ -219,7 +219,7 @@ export const reviews: Review[] = [
   {
     author: "Chris Byard",
     role: "CTO", 
-    company: "Signal Dynamic",
+    company: "Signal Dynamic (Upwork)",
     project: "Azure Certifate Management For IoT Devices  ",
     content: "Tarek was great - very good and thorough communication and successfully completed the work on schedule. Will certainly use again in future.",
     rating: 5,
@@ -251,7 +251,7 @@ export const reviews: Review[] = [
   {
     author: "Tim Ho",
     role: "Product Owner",
-    company: "Boreal Laser Inc.",
+    company: "Boreal Laser Inc. (Upwork)",
     project: "Desktop Licencing App",
     content: "Our experience has been immensely positive, a reflection of both the Upwork platform's efficacy and Tarek's exceptional talent and work ethic. This project exemplifies how visionary individuals can transform ideas into exemplary solutions.",
     rating: 5,
