@@ -73,10 +73,11 @@ export const personalInfo: PersonalInfo = {
 export const skills: Skills = {
   "Programming Languages": ["C#", "C++", "JavaScript", "TypeScript", "Python", "Dart"],
   "Frameworks & Platforms": [".NET", "Node.js", "Nest.js", "React", "Flutter"],
-  "Cloud & Serverless": ["Azure Function Apps", "Azure Service Bus", "Azure Web Hosting"],
-  "Data & APIs": ["SQL Server", "PostgreSQL", "RESTful APIs", "Websockets", "Message Queuing"],
-  "Version Control & CI/CD": ["Git", "GitHub", "GitHub Actions", "Containerization (Docker)"],
-  "Miscellaneous": ["UML", "Documentation", "Markdown", "LaTeX", "Agile", "Scrum", "Waterfall"],
+  "Cloud & Serverless": ["Azure Function Apps", "Azure Service Bus", "Azure Web Hosting", "Azure IoT Hub", "ELK Stack"],
+  "Data & APIs": ["SQL Server", "PostgreSQL", "RESTful APIs", "WebSockets", "Message Queuing", "Data Migration", "ETL Pipelines"],
+  "Embedded & IoT": ["ESP32", "STM32", "C++", "MQTT", "OTA Updates", "Secure Firmware", "Device Provisioning"],
+  "Version Control & CI/CD": ["Git", "GitHub", "GitHub Actions"],
+  "Miscellaneous": ["UML", "Documentation Practices", "Markdown", "LaTeX", "Agile", "Scrum", "Waterfall"],
 };
 
 export const coreSkills: string[] = [
@@ -87,28 +88,56 @@ export const coreSkills: string[] = [
 
 export const experiences: Experience[] = [
   {
-    title: "Software Engineer (Remote)",
-    company: "Upwork",
-    period: "Jan 2023 - Present",
-    link: "https://www.upwork.com/freelancers/~01f068ac7a77a08223",
-    achievements: [
-      "Delivered 10+ large-scale projects, starting from system design, implementation, documentation, and maintenance.",
-      "Provided consultation and guidance to help diverse companies build and maintain long-term projects.",
-      "Delivered different dashboards to visualize core data in real-time and along to alerting systems.",
-      "Designed and delivered Database migration across different database engines.",
-    ],
-  },
-  {
     title: "Full-Stack Software Engineer",
     company: "RES-VA",
     link: "https://res-va.com/",
     period: "Jun 2024 - Present",
     achievements: [
-      "Delivered full-stack solutions using React Js, C#, .NET, and SQL Server, easing the KPI tracking and data management process.",
-      "Built automated workflows with Azure Function Apps and Service Bus, reducing data collection time by 10x and cutting manual workload.",
-      "Designed and implemented automation pipelines to ease deployment and maintainability of the ongoing apps.",
-      "Creation of pre-compiled SQL views, reducing response latency by 40%.",
-      "Collaborated with CTO and Senior Software Engineer to design detailed ERD for a multi-tenant file management system.",
+      "Built full-stack solutions using React.js, C#, .NET, and SQL Server, streamlining KPI tracking and data management.",
+      "Automated workflows with Azure Function Apps and Service Bus, reducing data collection time by 10×.",
+      "Implemented deployment pipelines improving maintainability and version traceability.",
+      "Collaborated on the ERD design for a multi-tenant file management system.",
+    ],
+  },
+  {
+    title: "Database Engineer (Upwork Freelance)",
+    company: "Sanad Finance",
+    period: "Jun 2024 - Present",
+    achievements: [
+      "Implemented Python data migration scripts transferring data from SQL Server to PostgreSQL with restructured schema and constraints.",
+      "Designed and optimized materialized views and complex CTEs for reporting dashboards.",
+      "Built and configured an integrated ELK (Elasticsearch, Logstash, Kibana) stack to visualize performance analytics directly from PostgreSQL.",
+      "Improved data reliability and query performance by 30%.",
+    ],
+  },
+  {
+    title: "Embedded IoT Engineer (Upwork Freelance)",
+    company: "Boreal Laser Inc.",
+    period: "Jun 2023 - Dec 2023",
+    link: "https://www.upwork.com/jobs/~01f89be264ec24bfce",
+    achievements: [
+      "Developed firmware for multi-sensor IoT devices ensuring secure communication and stable real-time telemetry.",
+      "Built a lightweight IoT dashboard using Vanilla JS, HTML, and CSS to visualize live sensor data, reducing diagnostic time by 30%.",
+    ],
+  },
+  {
+    title: "Desktop App Developer (Upwork Freelance)",
+    company: "Boreal Laser Inc.",
+    period: "Feb 2024 - Apr 2024",
+    link: "https://www.upwork.com/jobs/~019b407c3a005474d7",
+    achievements: [
+      "Built a cross-platform Flutter Desktop licensing application integrated with APIs and hardware-based encryption.",
+      "Reduced manual license issuance time by 50% through automated validation workflows and local caching.",
+    ],
+  },
+  {
+    title: "Embedded IoT Engineer (Upwork Freelance)",
+    company: "Signal Dynamic",
+    period: "Apr 2023 - Jun 2023",
+    achievements: [
+      "Developed firmware for a Universal IoT Module enabling secure bidirectional communication via Azure IoT Hub.",
+      "Implemented OTA (Over-the-Air) updates and telemetry pipelines supporting predictive maintenance.",
+      "Designed device provisioning and cloud event routing for scalable IoT deployments.",
     ],
   },
   {
@@ -117,9 +146,9 @@ export const experiences: Experience[] = [
     period: "Jun 2022 - Oct 2024",
     link: "https://sudotechs.com/",
     achievements: [
-      "Designed IoT systems architecture and implemented firmware for a variety of micro-controllers, supporting 20+ industrial devices.",
-      "Optimized embedded workflows, reducing device data transmission delays by 80%.",
-      "Delivered customized IoT solutions that scaled to handle 2× more connected devices.",
+      "Created IoT systems architecture and implemented firmware for 20+ industrial devices.",
+      "Optimized embedded workflows, reducing data transmission delays by 80%.",
+      "Delivered scalable IoT solutions handling 2× more connected devices.",
     ],
   },
   {
@@ -128,8 +157,8 @@ export const experiences: Experience[] = [
     period: "Oct 2022 - Oct 2023",
     link: "https://www.cic-cairo.edu.eg/",
     achievements: [
-      "Designed and delivered a practical IoT curriculum for over 200 students.",
-      "Delivered more than 80 Hours of practical sessions across different workshops.",
+      "Structured and delivered a hands-on IoT curriculum for 200+ students.",
+      "Conducted 80+ hours of workshops and lab sessions focusing on microcontrollers and IoT system design.",
     ],
   },
   {
@@ -138,8 +167,8 @@ export const experiences: Experience[] = [
     period: "Jun 2021 - Sep 2021",
     link: "https://www.linkedin.com/company/sector-b5/posts/?feedView=all",
     achievements: [
-      "Gained practical experience with 3D printing (FDM, SLA) and CNC machinery.",
-      "Designed and built an autonomous maze-solver robot that completed obstacle courses 20% faster than baseline models.",
+      "Gained practical experience with 3D printing (FDM, SLA) and CNC machining.",
+      "Built an autonomous maze-solving robot achieving 20% faster navigation than baseline models.",
     ],
   },
 ];
@@ -148,9 +177,8 @@ export const projects: Project[] = [
   {
     title: "Lead Generation Reporting App",
     company: "RES-VA",
-    description: "Developed a reporting platform to visualize and export real-time lead and productivity metrics, cutting report generation time by 3×.",
-    technologies: [".NET", "SQL", "Redis", "React", "TypeScript", "Azure Function Apps", "Azure Service Bus", "Dockers"],
-    link: "https://res-va-reporting.com/",
+    description: "Developed a reporting platform using .NET, SQL, Redis, React TS to visualize real-time leads and productivity metrics, cutting report generation time by 3×.",
+    technologies: [".NET", "SQL", "Redis", "React", "TypeScript"],
   },
   {
     title: "Loan System Reporting App",
@@ -194,7 +222,7 @@ export const projects: Project[] = [
   {
     title: "Maze Solver Robot pi-bot",
     company: "Sector B5",
-    description: "Designed and programmed an autonomous maze-solving robot using C++, achieving a 25% improvement in navigation speed.",
+    description: "Designed and programmed an autonomous robot using C++, achieving the first place in the program's competition.",
     technologies: ["C++", "Arduino", "Robotics"],
   },
 ];

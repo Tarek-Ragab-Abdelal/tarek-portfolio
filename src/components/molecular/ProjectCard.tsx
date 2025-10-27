@@ -44,7 +44,7 @@ const ProjectCard = ({ title, company, description, technologies, link }: Projec
 
   const getCardHeight = () => {
     if (isMobile) return 'min-h-[240px] h-auto';
-    return link ? 'min-h-[220px] max-h-[220px]' : 'min-h-[280px] max-h-[400px]';
+    return 'min-h-[280px] max-h-[400px]';
   };
 
   const cardClasses = `group hover:-translate-y-1 ${getCardHeight()} flex flex-col transition-all duration-300`;
