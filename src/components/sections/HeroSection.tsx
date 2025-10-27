@@ -45,16 +45,54 @@ const HeroSection = () => {
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium gradient-primary bg-clip-text text-transparent">
                 FullStack
               </h2>
-              <h3 className="text-lg md:text-xl text-muted-foreground font-medium">
-                Software Engineer based in {personalInfo.location}
-              </h3>
+            <h3 className="text-lg md:text-xl text-muted-foreground font-medium">
+              Software Engineer based in {personalInfo.location}
+            </h3>
+            </div>
+
+            {/* Upwork Achievements */}
+            <div className="flex flex-wrap gap-4 items-center py-2">
+              <a
+                href={personalInfo.links.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 bg-green-50 dark:bg-green-950/30 rounded-full border border-green-200 dark:border-green-800 hover:bg-green-100 dark:hover:bg-green-950/50 transition-colors cursor-pointer"
+                aria-label="View Upwork Profile - 5 Star Rated"
+              >
+                <SiUpwork className="w-4 h-4 text-green-600" />
+                <span className="text-sm font-medium text-green-700 dark:text-green-300">5⭐ Rated</span>
+              </a>
+              
+              <a
+                href={personalInfo.links.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/30 rounded-full border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-950/50 transition-colors cursor-pointer"
+                aria-label="View Upwork Profile - Top Rated"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" className="w-4 h-4 text-emerald-600">
+                  <path fill="currentColor" fillRule="evenodd" d="M18.37 19.002H5.63v-1.867h12.74v1.867zm.02-3.736H5.608L3 8.314l4.992 1.664L12 5l4.008 4.978L21 8.314l-2.61 6.952z" clipRule="evenodd"></path>
+                </svg>
+                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">Top Rated</span>
+              </a>
+              
+              <a
+                href={personalInfo.links.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-950/30 rounded-full border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-colors cursor-pointer"
+                aria-label="View Upwork Profile - 100% Success Rate"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" className="w-4 h-4 text-blue-600">
+                  <path fill="currentColor" fillRule="evenodd" d="M18.37 19.002H5.63v-1.867h12.74v1.867zm.02-3.736H5.608L3 8.314l4.992 1.664L12 5l4.008 4.978L21 8.314l-2.61 6.952z" clipRule="evenodd"></path>
+                </svg>
+                <span className="text-sm font-medium text-blue-700 dark:text-blue-300">100% Success Rate</span>
+              </a>
             </div>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed" role="text">
               {personalInfo.summary}
-            </p>
-            
-            {/* Additional SEO-rich content */}
+            </p>            {/* Additional SEO-rich content */}
             <div className="space-y-3 pt-4 sr-only">
               <p>
                 Available for remote software development projects, technical consulting, and full-time opportunities. 
@@ -139,13 +177,6 @@ const HeroSection = () => {
               />
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>
