@@ -1,4 +1,4 @@
-name: Deploy Vite app to GitHub Pages
+name: Deploy Next.js app to GitHub Pages
 
 on:
   push:
@@ -30,17 +30,13 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Build
+      - name: Build static export
         run: npm run build
-
-      # SPA fallback: serve app on unknown routes
-      - name: Create 404 fallback
-        run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./out
 
   deploy:
     runs-on: ubuntu-latest
