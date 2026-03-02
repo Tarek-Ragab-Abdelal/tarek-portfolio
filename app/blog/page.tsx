@@ -18,49 +18,39 @@ export default function BlogIndexPage() {
   return (
     <>
       <Navbar />
-      <main className="container py-14 md:py-20">
-        <Reveal className="space-y-8">
-          <header className="space-y-4">
-            <span className="badge-pill">Technical Blog</span>
-            <h1 className="font-display text-4xl font-semibold text-white md:text-5xl">Implementation notes and product lessons</h1>
-            <p className="max-w-3xl text-sm leading-relaxed text-muted md:text-base">
-              Posts are written in Markdown and statically generated with Next.js for fast loading and strong SEO indexing.
-            </p>
-          </header>
+      <main className="container py-16 md:py-20">
+        <Reveal>
+          <p className="text-xs font-medium uppercase tracking-widest text-accent">Technical Blog</p>
+          <h1 className="mt-2 text-3xl font-bold text-white md:text-4xl">Implementation notes & product lessons</h1>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+            Posts are written in Markdown and statically generated with Next.js for fast loading and strong SEO indexing.
+          </p>
+        </Reveal>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {posts.map((post) => (
-              <article key={post.slug} className="section-shell noise-mask p-6">
-                {post.coverImage ? (
-                  <div className="relative mb-4 aspect-[16/9] overflow-hidden rounded-2xl border border-line/70">
-                    <Image
-                      src={post.coverImage}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 560px"
-                      className="object-cover"
-                    />
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {posts.map((post, i) => (
+            <Reveal key={post.slug} delay={i * 0.04}>
+              <article className="flex h-full flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-accent/40">
+                {post.coverImage && (
+                  <div className="relative mb-4 aspect-[16/9] overflow-hidden rounded-lg">
+                    <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 768px) 100vw, 520px" className="object-cover" />
                   </div>
-                ) : null}
-                <p className="text-xs uppercase tracking-[0.13em] text-muted">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric"
-                  })}
+                )}
+                <p className="text-xs text-muted">
+                  {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                 </p>
-                <h2 className="mt-3 font-display text-2xl font-semibold text-white">{post.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{post.excerpt}</p>
-                <div className="mt-5 flex items-center justify-between text-xs text-muted">
+                <h2 className="mt-2 text-xl font-semibold text-white">{post.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{post.excerpt}</p>
+                <div className="mt-auto flex items-center justify-between pt-4 text-xs text-muted">
                   <span>{post.readingTimeMinutes} min read</span>
-                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1 text-accent hover:text-white">
-                    Read post <ArrowRight size={14} />
+                  <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-1 font-medium text-accent hover:text-white">
+                    Read post <ArrowRight size={12} />
                   </Link>
                 </div>
               </article>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </main>
       <Footer />
     </>

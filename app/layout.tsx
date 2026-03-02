@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, faqs, featuredProjects, personalInfo } from "@/lib/portfolio-data";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -10,23 +13,14 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Tarek Ragab, full-stack engineer focused on data-intensive products, cloud automation, and interactive web experiences.",
-  alternates: {
-    canonical: "/"
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,
     title: `${personalInfo.name} | Full-Stack Engineer`,
     description:
       "SEO-first interactive portfolio highlighting product engineering, cloud systems, and shipped projects.",
-    images: [
-      {
-        url: "/images/profile.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${personalInfo.name} profile photo`
-      }
-    ]
+    images: [{ url: "/images/profile.jpg", width: 1200, height: 630, alt: `${personalInfo.name} profile photo` }]
   },
   twitter: {
     card: "summary_large_image",
@@ -46,7 +40,7 @@ export const metadata: Metadata = {
   ]
 };
 
-const homeStructuredData = {
+const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -55,10 +49,7 @@ const homeStructuredData = {
       jobTitle: personalInfo.title,
       email: personalInfo.email,
       telephone: personalInfo.phone,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: personalInfo.location
-      },
+      address: { "@type": "PostalAddress", addressLocality: personalInfo.location },
       url: SITE_URL,
       sameAs: [personalInfo.links.github, personalInfo.links.linkedin, personalInfo.links.upwork]
     },
@@ -69,22 +60,19 @@ const homeStructuredData = {
       description: personalInfo.summary,
       inLanguage: "en"
     },
-    ...featuredProjects.map((project) => ({
+    ...featuredProjects.map((p) => ({
       "@type": "SoftwareSourceCode",
-      name: project.title,
-      codeRepository: project.repoUrl ?? undefined,
-      url: project.liveUrl ?? project.repoUrl ?? SITE_URL,
-      programmingLanguage: project.stack.join(", ")
+      name: p.title,
+      codeRepository: p.repoUrl ?? undefined,
+      url: p.liveUrl ?? p.repoUrl ?? SITE_URL,
+      programmingLanguage: p.stack.join(", ")
     })),
     {
       "@type": "FAQPage",
-      mainEntity: faqs.map((item) => ({
+      mainEntity: faqs.map((f) => ({
         "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer
-        }
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer }
       }))
     }
   ]
@@ -92,12 +80,12 @@ const homeStructuredData = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased">
         {children}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </body>
     </html>

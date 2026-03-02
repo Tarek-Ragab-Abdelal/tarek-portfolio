@@ -10,16 +10,16 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-bg/75 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white">
+    <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-lg">
+      <div className="container flex h-14 items-center justify-between">
+        <Link href="/" className="text-sm font-semibold tracking-wide text-white">
           {personalInfo.name}
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm text-muted md:flex">
-          {navLinks.map((item) => (
-            <Link key={item.label} href={item.href} className="transition-colors hover:text-white">
-              {item.label}
+        <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
+          {navLinks.map((l) => (
+            <Link key={l.label} href={l.href} className="transition-colors hover:text-white">
+              {l.label}
             </Link>
           ))}
         </nav>
@@ -27,33 +27,36 @@ export function Navbar() {
         <button
           type="button"
           aria-label="Toggle menu"
-          onClick={() => setOpen((state) => !state)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line/80 text-muted transition-colors hover:text-white md:hidden"
+          onClick={() => setOpen((s) => !s)}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-line text-muted md:hidden"
         >
-          {open ? <X size={18} /> : <Menu size={18} />}
+          {open ? <X size={16} /> : <Menu size={16} />}
         </button>
       </div>
 
       <AnimatePresence>
-        {open ? (
+        {open && (
           <motion.nav
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="border-t border-line/70 bg-surface/95 px-6 py-5 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-t border-line bg-surface md:hidden"
           >
-            <ul className="space-y-4 text-sm text-muted">
-              {navLinks.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} onClick={() => setOpen(false)} className="block hover:text-white">
-                    {item.label}
+            <ul className="space-y-1 px-5 py-4 text-sm text-muted">
+              {navLinks.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-3 py-2 hover:bg-line/50 hover:text-white"
+                  >
+                    {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.nav>
-        ) : null}
+        )}
       </AnimatePresence>
     </header>
   );

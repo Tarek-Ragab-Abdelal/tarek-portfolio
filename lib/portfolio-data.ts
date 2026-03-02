@@ -42,7 +42,7 @@ export const personalInfo = {
 
 export const upworkBadges = [
   { label: "Top Rated", value: "Upwork" },
-  { label: "5-Star Rated", value: "Client Feedback" },
+  { label: "5-⭐ Rated", value: "Client Feedback" },
   { label: "100% Job Success", value: "Consistent Delivery" }
 ] as const;
 
@@ -248,10 +248,22 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    role: "Senior Software Engineer",
+    company: "Limaz Inc.",
+    link: "https://limaz.co/",
+    period: "Dec 2025 - Present",
+    highlights: [
+      "Leading development of a scalable SaaS platform for inventory management using Node.js, Next.js, and GCP.",
+      "Implemented CI/CD pipelines with GitHub Actions, reducing deployment time by 90%.",
+      "Collaborated on product design to align technical solutions with business goals.",
+      "Mentored junior engineers and established coding standards to improve code quality."
+    ]
+  },
+  {
     role: "Full-Stack Software Engineer",
     company: "RES-VA",
     link: "https://res-va.com/",
-    period: "Jun 2024 - Present",
+    period: "Jun 2024 - Dec 2025",
     highlights: [
       "Built full-stack solutions using React.js, C#, .NET, and SQL Server, streamlining KPI tracking and data management.",
       "Automated workflows with Azure Function Apps and Service Bus, reducing data collection time by 10x.",
@@ -262,7 +274,7 @@ export const experiences: ExperienceItem[] = [
   {
     role: "Database Engineer (Upwork Freelance)",
     company: "Sanad Finance",
-    period: "Jun 2024 - Present",
+    period: "Jun 2025 - Nov 2025",
     highlights: [
       "Implemented Python data migration scripts transferring data from SQL Server to PostgreSQL with restructured schema and constraints.",
       "Designed and optimized materialized views and complex CTEs for reporting dashboards.",

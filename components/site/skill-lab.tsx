@@ -1,59 +1,106 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Code2, Cloud, Database, Cpu, GitBranch, Wrench, Layers, ChevronDown } from "lucide-react";
 import type { SkillGroup } from "@/lib/portfolio-data";
 
-interface SkillLabProps {
-  groups: SkillGroup[];
-}
+const icons: Record<string, React.ElementType> = {
+  "Programming Languages": Code2,
+  "Frameworks & Platforms": Layers,
+  "Cloud & Serverless": Cloud,
+  "Data & APIs": Database,
+  "Embedded & IoT": Cpu,
+  "Version Control & CI/CD": GitBranch,
+  Miscellaneous: Wrench
+};
 
-export function SkillLab({ groups }: SkillLabProps) {
-  const [active, setActive] = useState(groups[0]?.name ?? "");
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.07 } }
+};
 
-  const selectedGroup = groups.find((group) => group.name === active) ?? groups[0];
+const cardVariant = {
+  hidden: { opacity: 0, y: 20, scale: 0.97 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: "easeOut" } }
+};
+
+export function SkillLab({ groups }: Readonly<{ groups: SkillGroup[] }>) {
+  const [expanded, setExpanded] = useState<number | null>(0);
 
   return (
-    <div className="section-shell noise-mask p-6 md:p-8">
-      <div className="flex flex-wrap gap-3">
-        {groups.map((group) => {
-          const selected = selectedGroup.name === group.name;
-          return (
-            <button
-              key={group.name}
-              type="button"
-              onClick={() => setActive(group.name)}
-              className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all ${
-                selected
-                  ? "border-accent bg-accent/15 text-white"
-                  : "border-line/70 bg-bg/55 text-muted hover:border-accent2/70 hover:text-white"
-              }`}
-            >
-              {group.name}
-            </button>
-          );
-        })}
-      </div>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {groups.map((group, idx) => {
+        const Icon = icons[group.name] ?? Code2;
+        const isOpen = expanded === idx;
 
-      <motion.ul
-        key={selectedGroup.name}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="mt-6 flex flex-wrap gap-3"
-      >
-        {selectedGroup.skills.map((skill, index) => (
-          <motion.li
-            key={skill}
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.24, delay: index * 0.03 }}
-            className="rounded-full border border-line/70 bg-bg/70 px-4 py-2 text-sm text-slate-200"
+        return (
+          <motion.div
+            key={group.name}
+            variants={cardVariant}
+            layout
+            className="skill-card card-hover cursor-pointer rounded-xl border border-line bg-surface p-5 transition-colors hover:border-accent/30"
+            onClick={() => setExpanded(isOpen ? null : idx)}
           >
-            {skill}
-          </motion.li>
-        ))}
-      </motion.ul>
-    </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 transition-colors group-hover:bg-accent/20">
+                  <Icon size={18} className="text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{group.name}</h3>
+                  <p className="text-[11px] text-muted">{group.skills.length} skills</p>
+                </div>
+              </div>
+              <motion.div
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <ChevronDown size={16} className="text-muted" />
+              </motion.div>
+            </div>
+
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {group.skills.map((skill, si) => (
+                      <motion.span
+                        key={skill}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2, delay: si * 0.03 }}
+                        className="rounded-md border border-line/80 bg-bg px-2.5 py-1 text-xs text-neutral-400 transition-all hover:scale-105 hover:border-accent/50 hover:text-white"
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {!isOpen && (
+              <p className="mt-3 truncate text-xs text-neutral-600">
+                {group.skills.slice(0, 4).join(" · ")}
+                {group.skills.length > 4 && ` · +${group.skills.length - 4}`}
+              </p>
+            )}
+          </motion.div>
+        );
+      })}
+    </motion.div>
   );
 }

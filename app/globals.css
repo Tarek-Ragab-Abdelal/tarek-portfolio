@@ -2,22 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-display: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
-  --font-body: "Gill Sans", "Trebuchet MS", "Segoe UI", sans-serif;
-  --bg: 194 66% 7%;
-  --surface: 195 51% 11%;
-  --line: 193 35% 24%;
-  --text: 184 47% 95%;
-  --muted: 188 15% 67%;
-  --accent: 32 96% 58%;
-  --accent-2: 176 100% 40%;
-}
-
-* {
-  border-color: hsl(var(--line));
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -25,13 +9,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  color: hsl(var(--text));
-  font-family: var(--font-body), sans-serif;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(11, 170, 196, 0.18), transparent 40%),
-    radial-gradient(circle at 85% 12%, rgba(255, 178, 67, 0.15), transparent 44%),
-    linear-gradient(125deg, #041219, #07222e 32%, #05161f 100%);
-  background-attachment: fixed;
+  color: #e5e5e5;
+  background: #0a0a0a;
 }
 
 a {
@@ -40,63 +19,81 @@ a {
 }
 
 ::selection {
-  color: #04222d;
-  background: hsl(var(--accent));
+  color: #fff;
+  background: #3b82f6;
 }
 
-.section-shell {
-  @apply relative rounded-3xl border border-line/80 bg-surface/70 backdrop-blur-sm shadow-glow;
-}
-
-.noise-mask {
-  position: relative;
-}
-
-.noise-mask::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 3px 3px;
-  opacity: 0.35;
-  border-radius: inherit;
-}
-
+/* Gradient text utility */
 .text-gradient {
-  background: linear-gradient(100deg, hsl(var(--accent)) 10%, #fff 42%, hsl(var(--accent-2)) 95%);
-  background-size: 200% 100%;
-  animation: beam 12s linear infinite alternate;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+  background-size: 200% 200%;
+  animation: gradient-text 6s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.badge-pill {
-  @apply inline-flex items-center rounded-full border border-line bg-bg/70 px-3 py-1 text-xs font-semibold tracking-wide text-muted;
+@keyframes gradient-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
+/* Hero gradient orb */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Smooth card hover lift */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Skill card shimmer on hover */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(59, 130, 246, 0.06) 50%, transparent 60%);
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Prose overrides for blog */
 .prose {
-  --tw-prose-body: rgba(226, 238, 244, 0.9);
+  --tw-prose-body: #d4d4d4;
   --tw-prose-headings: #fff;
-  --tw-prose-lead: rgba(226, 238, 244, 0.82);
-  --tw-prose-links: hsl(var(--accent));
+  --tw-prose-lead: #a3a3a3;
+  --tw-prose-links: #3b82f6;
   --tw-prose-bold: #fff;
-  --tw-prose-counters: rgba(198, 219, 230, 0.9);
-  --tw-prose-bullets: hsl(var(--accent-2));
-  --tw-prose-hr: rgba(255, 255, 255, 0.15);
-  --tw-prose-quotes: rgba(240, 251, 255, 0.95);
-  --tw-prose-quote-borders: hsl(var(--accent));
-  --tw-prose-code: #f4faff;
-  --tw-prose-pre-code: #f4faff;
-  --tw-prose-pre-bg: rgba(9, 23, 31, 0.9);
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+  --tw-prose-counters: #a3a3a3;
+  --tw-prose-bullets: #3b82f6;
+  --tw-prose-hr: #232323;
+  --tw-prose-quotes: #e5e5e5;
+  --tw-prose-quote-borders: #3b82f6;
+  --tw-prose-code: #e5e5e5;
+  --tw-prose-pre-code: #e5e5e5;
+  --tw-prose-pre-bg: #141414;
 }
