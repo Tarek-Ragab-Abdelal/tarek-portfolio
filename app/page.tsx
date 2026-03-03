@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { ProjectShowcase } from "@/components/site/project-showcase";
@@ -13,6 +13,32 @@ import { experiences, featuredProjects, personalInfo, skillGroups } from "@/lib/
 
 export default function HomePage() {
   const recentPosts = getRecentPosts(3);
+  const contactChannels = [
+    {
+      label: "Email",
+      value: personalInfo.email,
+      href: `mailto:${personalInfo.email}`,
+      icon: Mail
+    },
+    {
+      label: "Upwork",
+      value: "Hire me on Upwork",
+      href: personalInfo.links.upwork,
+      icon: BriefcaseBusiness
+    },
+    {
+      label: "LinkedIn",
+      value: "Connect professionally",
+      href: personalInfo.links.linkedin,
+      icon: Linkedin
+    },
+    {
+      label: "GitHub",
+      value: "See open-source work",
+      href: personalInfo.links.github,
+      icon: Github
+    }
+  ] as const;
 
   return (
     <>
@@ -126,15 +152,38 @@ export default function HomePage() {
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
               Available for direct collaboration on software products, platform engineering, or architecture consulting.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-all hover:shadow-[0_4px_20px_rgba(59,130,246,0.3)]"
-              >
-                <Mail size={15} /> {personalInfo.email}
-              </a>
-              <span className="rounded-md border border-line px-3 py-2 text-xs text-muted">{personalInfo.phone}</span>
-              <span className="rounded-md border border-line px-3 py-2 text-xs text-muted">{personalInfo.location}</span>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {contactChannels.map(({ label, value, href, icon: Icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  className="group rounded-xl border border-line bg-surface/80 p-4 transition-colors hover:border-accent/40"
+                >
+                  <p className="inline-flex items-center gap-2 text-xs uppercase tracking-wide text-accent">
+                    <Icon size={14} />
+                    {label}
+                  </p>
+                  <p className="mt-2 text-sm font-medium text-white transition-colors group-hover:text-accent">{value}</p>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border border-line bg-surface/60 p-4">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-wide text-muted">
+                  <Phone size={14} />
+                  Phone
+                </p>
+                <p className="mt-2 text-sm font-medium text-white">{personalInfo.phone}</p>
+              </div>
+              <div className="rounded-xl border border-line bg-surface/60 p-4">
+                <p className="inline-flex items-center gap-2 text-xs uppercase tracking-wide text-muted">
+                  <MapPin size={14} />
+                  Location
+                </p>
+                <p className="mt-2 text-sm font-medium text-white">{personalInfo.location}</p>
+              </div>
             </div>
           </div>
         </section>

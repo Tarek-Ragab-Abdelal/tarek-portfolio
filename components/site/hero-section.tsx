@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Download, Github, Linkedin } from "lucide-react";
 import { AnimatedCounter } from "./animated-counter";
 import { SplitTextReveal } from "./split-text-reveal";
 import { SquaresBackground } from "./squares-background";
@@ -72,10 +72,12 @@ export function HeroSection() {
 
             <motion.div variants={fadeUp} className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center lg:justify-start">
               <Link
-                href={`mailto:${personalInfo.email}`}
+                href={personalInfo.links.upwork}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:brightness-110 sm:w-auto"
               >
-                <Mail size={16} /> Get in Touch
+                Let's Collaborate
               </Link>
               <Link
                 href="/resume.pdf"

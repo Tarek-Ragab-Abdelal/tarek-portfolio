@@ -1,18 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { navLinks, personalInfo } from "@/lib/portfolio-data";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") return;
+
+    event.preventDefault();
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-lg">
       <div className="container flex h-14 items-center justify-between">
-        <Link href="/" className="text-sm font-semibold tracking-wide text-white">
+        <Link href="/" onClick={handleBrandClick} className="text-sm font-semibold tracking-wide text-white">
           {personalInfo.name}
         </Link>
 
