@@ -36,37 +36,44 @@ export function HeroSection() {
       {/* Gradient depth orb */}
       <div className="pointer-events-none absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-accent/10 blur-[120px]" />
 
-      <div className="container relative z-10 py-24 md:py-32">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="container relative z-10 py-16 md:py-32">
+        <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
           {/* Text column */}
-          <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-5">
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
+          <motion.div variants={stagger} initial="hidden" animate="show" className="order-2 space-y-5 text-center lg:order-1 lg:text-left">
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-2 lg:justify-start">
               {upworkBadges.map((b) => (
-                <span key={b.label} className="rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
+                <Link
+                  key={b.label}
+                  href={personalInfo.links.upwork}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${b.label} on Upwork`}
+                  className="rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent transition-all hover:bg-accent/20 hover:text-white"
+                >
                   {b.label}
-                </span>
+                </Link>
               ))}
             </motion.div>
 
             <motion.div variants={fadeUp}>
-              <p className="text-lg text-muted md:text-xl">Hi, I&apos;m</p>
-              <h1 className="mt-1 text-4xl font-bold tracking-tight md:text-6xl">
+              <p className="text-base text-muted sm:text-lg md:text-xl">Hi, I&apos;m</p>
+              <h1 className="mt-1 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                 <SplitTextReveal text={personalInfo.name} className="text-gradient" delay={0.3} splitBy="char" />
               </h1>
             </motion.div>
 
-            <motion.p variants={fadeUp} className="text-lg text-neutral-400 md:text-xl">
+            <motion.p variants={fadeUp} className="text-base text-neutral-400 sm:text-lg md:text-xl">
               {personalInfo.title}
             </motion.p>
 
-            <motion.p variants={fadeUp} className="max-w-xl text-sm leading-relaxed text-neutral-500">
+            <motion.p variants={fadeUp} className="mx-auto max-w-xl text-sm leading-relaxed text-neutral-500 lg:mx-0">
               {personalInfo.summary}
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3 pt-2">
+            <motion.div variants={fadeUp} className="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center lg:justify-start">
               <Link
                 href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:brightness-110"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:shadow-[0_4px_20px_rgba(59,130,246,0.4)] hover:brightness-110 sm:w-auto"
               >
                 <Mail size={16} /> Get in Touch
               </Link>
@@ -74,13 +81,13 @@ export function HeroSection() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-medium text-neutral-300 transition-all hover:border-accent/50 hover:text-white hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-medium text-neutral-300 transition-all hover:border-accent/50 hover:text-white hover:shadow-[0_4px_20px_rgba(59,130,246,0.1)] sm:w-auto"
               >
                 <Download size={16} /> Resume
               </Link>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex items-center gap-2 pt-1">
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 pt-1 lg:justify-start">
               {[
                 { href: personalInfo.links.github, icon: Github, label: "GitHub" },
                 { href: personalInfo.links.linkedin, icon: Linkedin, label: "LinkedIn" }
@@ -113,7 +120,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-            className="flex justify-center lg:justify-end"
+            className="order-1 flex justify-center lg:order-2 lg:justify-end"
           >
             <div className="relative">
               <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-accent/20 via-purple-500/10 to-cyan-500/15 blur-2xl" />
@@ -124,7 +131,7 @@ export function HeroSection() {
                   width={340}
                   height={340}
                   priority
-                  className="h-auto w-[280px] object-cover lg:w-[340px]"
+                  className="h-auto w-[230px] object-cover sm:w-[280px] lg:w-[340px]"
                 />
               </div>
             </div>
@@ -136,7 +143,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 grid grid-cols-3 gap-4"
+          className="mt-12 grid grid-cols-1 gap-3 sm:mt-16 sm:grid-cols-3 sm:gap-4"
         >
           <div className="rounded-xl border border-line bg-surface/80 p-5 backdrop-blur-sm">
             <AnimatedCounter end={4} suffix="+" label="Years Experience" />

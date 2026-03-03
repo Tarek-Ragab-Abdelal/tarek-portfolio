@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface SplitTextRevealProps {
   text: string;
@@ -26,21 +27,33 @@ const child = {
 };
 
 export function SplitTextReveal({ text, className, delay = 0, splitBy = "word" }: Readonly<SplitTextRevealProps>) {
+  const [mounted, setMounted] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const units = splitBy === "word" ? text.split(" ") : text.split("");
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || shouldReduceMotion) {
+    return (
+      <span className={`inline-block ${className ?? ""}`} aria-label={text}>
+        {units.map((unit, i) => (
+          <span key={i} className="inline-block">
+            {splitBy === "char" && unit === " " ? "\u00A0" : unit}
+            {splitBy === "word" && i < units.length - 1 && "\u00A0"}
+          </span>
+        ))}
+      </span>
+    );
+  }
+
   return (
-    <motion.span
-      className={className}
-      variants={container}
-      custom={delay}
-      initial="hidden"
-      animate="show"
-      aria-label={text}
-    >
+    <motion.span className={`inline-block ${className ?? ""}`} variants={container} custom={delay} initial="hidden" animate="show" aria-label={text}>
       {units.map((unit, i) => (
         <span key={i} className="inline-block overflow-hidden">
           <motion.span className="inline-block" variants={child}>
-            {unit}
+            {splitBy === "char" && unit === " " ? "\u00A0" : unit}
           </motion.span>
           {splitBy === "word" && i < units.length - 1 && "\u00A0"}
         </span>
