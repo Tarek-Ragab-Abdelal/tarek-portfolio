@@ -3,11 +3,11 @@ title: "Throwback: Introduction to IoT Session at HTI"
 excerpt: "A look back at delivering an Intro to IoT session at HTI in collaboration with IEEE HTI OCT SB."
 date: "2023-05-28"
 tags: ["IoT", "Education", "IEEE", "HTI"]
-coverImage: "/images/blog/intro-to-iot-hti.jpg"
+coverImage: "/images/blog/intro-to-iot-hti.png"
 sourceUrl: "https://www.linkedin.com/posts/tarek-ragab_throwback-iot-education-activity-7068682610557751296-M3At"
 ---
 
-![Introduction to IoT session at HTI](/images/blog/intro-to-iot-hti.jpg)
+![Introduction to IoT session at HTI](/images/blog/intro-to-iot-hti.png)
 
 This was one of the sessions I still think about often. In collaboration with **IEEE HTI OCT SB**, I delivered an "Introduction to IoT" session at the Higher Technological Institute. The audience was mostly undergraduate engineering students, many of whom had never programmed a microcontroller before.
 
@@ -26,6 +26,7 @@ The session was structured to build understanding progressively:
 I started with a definition that avoids buzzwords: IoT is about connecting physical things to software systems so you can monitor, control, or automate them. That is it. No need to invoke Industry 4.0 or smart cities in the first five minutes.
 
 I showed a simple example: a temperature sensor connected to an ESP32 that sends readings to a dashboard. From this single example, you can explain:
+
 - How a sensor converts physical phenomena to electrical signals.
 - How a microcontroller reads those signals and processes them.
 - How data moves from the device to a server (WiFi, MQTT, HTTP).
@@ -34,6 +35,7 @@ I showed a simple example: a temperature sensor connected to an ESP32 that sends
 ### 2. The hardware landscape
 
 I introduced the most common platforms students would encounter:
+
 - **Arduino**: great for learning, simple programming model, massive community.
 - **ESP32**: adds WiFi and Bluetooth, more processing power, widely used in real products.
 - **STM32**: professional-grade, used in industrial applications, steeper learning curve.
@@ -44,6 +46,7 @@ The point was not to pick a winner but to show that different tools exist for di
 ### 3. Communication protocols
 
 This is where most beginners get lost, so I kept it practical:
+
 - **HTTP**: familiar, works for low-frequency data, high overhead.
 - **MQTT**: lightweight publish-subscribe model, ideal for IoT. Low bandwidth, low power, designed for unreliable networks.
 - **WebSocket**: real-time bidirectional communication, good for dashboards and live monitoring.
@@ -53,6 +56,7 @@ I used the ESP32 WebSocket project I had built earlier as a live reference, show
 ### 4. From prototype to product
 
 The last section addressed the gap between a working breadboard prototype and a deployable product. Key considerations I highlighted:
+
 - **Power management**: a battery-powered device needs to sleep aggressively and wake only when necessary.
 - **Reliability**: what happens when WiFi drops? What happens when the sensor returns bad data?
 - **Security**: IoT devices are attack surfaces. Unencrypted communication and default credentials are real risks.
