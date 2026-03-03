@@ -73,6 +73,12 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const { data, content } = matter(raw);
 
   const processed = await remark().use(remarkGfm).use(remarkHtml).process(content);
+  let html = String(processed);
+
+  // Strip leading image if coverImage is already rendered by the template
+  if (data.coverImage) {
+    html = html.replace(/^\s*<p><img[^>]*><\/p>\s*/, "");
+  }
 
   return {
     slug,
@@ -83,6 +89,6 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     coverImage: data.coverImage ? String(data.coverImage) : undefined,
     sourceUrl: data.sourceUrl ? String(data.sourceUrl) : undefined,
     readingTimeMinutes: estimateReadingTime(content),
-    html: String(processed)
+    html
   };
 }
