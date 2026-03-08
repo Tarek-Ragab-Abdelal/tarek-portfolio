@@ -14,6 +14,27 @@ dist-ssr
 out
 *.local
 
+# AI Environment variables
+.env.codex
+.env.codex.local
+.mcp.json
+.codex/
+.claude/
+**/codex.md
+AGENTS.md
+**/AGENTS.md
+*/*/AGENTS.md
+Claude.md
+**/Claude.md
+*/*/Claude.md
+.mcp.json
+.codex/
+.codex/**
+AGENTS.md
+content/blog/AGENTS.md
+content/blog/codex.md
+public/images/blog/codex.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
