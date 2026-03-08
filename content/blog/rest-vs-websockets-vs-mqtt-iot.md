@@ -1,7 +1,7 @@
 ---
 title: "REST vs WebSockets vs MQTT: Choosing the Right Protocol for IoT Projects"
 excerpt: "A practical decision framework for selecting communication protocols in IoT systems, based on real project trade-offs across latency, reliability, and infrastructure complexity."
-date: "2026-03-03"
+date: "2026-03-08"
 tags: ["IoT", "Architecture", "MQTT", "WebSockets", "REST"]
 ---
 
