@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, faqs, featuredProjects, personalInfo } from "@/lib/portfolio-data";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -13,7 +10,12 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Tarek Ragab, full-stack engineer focused on data-intensive products, cloud automation, and interactive web experiences.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": `${SITE_URL}/feed.xml`
+    }
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
@@ -80,7 +82,7 @@ const structuredData = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <body className="font-sans antialiased">
         {children}
         <script
