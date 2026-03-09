@@ -27,7 +27,7 @@ export interface SkillGroup {
 
 export const personalInfo = {
   name: "Tarek Ragab",
-  title: "Full-Stack Software Engineer & Azure Cloud Developer",
+  title: "Full-Stack Software Engineer & Cloud Developer",
   location: "Cairo, Egypt",
   email: "tarek.madany113@gmail.com",
   phone: "+201090477381",
