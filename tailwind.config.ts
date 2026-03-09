@@ -13,7 +13,7 @@ const config: Config = {
       padding: "1.25rem",
       screens: { "2xl": "1080px" }
     },
-    extend: {
+      extend: {
       colors: {
         bg: "#0a0a0a",
         surface: "#141414",
@@ -22,7 +22,7 @@ const config: Config = {
         accent: "#3b82f6"
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"]
+        sans: ["system-ui", "sans-serif"]
       },
       keyframes: {
         float: {

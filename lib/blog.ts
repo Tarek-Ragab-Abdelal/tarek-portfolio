@@ -62,6 +62,24 @@ export function getRecentPosts(limit = 3): BlogPostMeta[] {
   return getAllPosts().slice(0, limit);
 }
 
+export function getRelatedPosts(currentSlug: string, tags: string[], limit = 3): BlogPostMeta[] {
+  const normalizedTags = new Set(tags.map((tag) => tag.toLowerCase()));
+
+  return getAllPosts()
+    .filter((post) => post.slug !== currentSlug)
+    .sort((a, b) => {
+      const aSharedTags = a.tags.filter((tag) => normalizedTags.has(tag.toLowerCase())).length;
+      const bSharedTags = b.tags.filter((tag) => normalizedTags.has(tag.toLowerCase())).length;
+
+      if (bSharedTags !== aSharedTags) {
+        return bSharedTags - aSharedTags;
+      }
+
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    })
+    .slice(0, limit);
+}
+
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const postPath = path.join(BLOG_DIRECTORY, `${slug}.md`);
 

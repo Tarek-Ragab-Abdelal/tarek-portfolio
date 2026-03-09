@@ -115,8 +115,23 @@ export default function HomePage() {
 
         {/* Blog */}
         <section id="blog" className="container py-16">
-          <p className="text-xs font-medium uppercase tracking-widest text-accent">Blog</p>
-          <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">Engineering notes</h2>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-widest text-accent">Blog</p>
+              <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">Engineering notes</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+                Browse the latest articles or explore the full archive for architecture, IoT, and product engineering write-ups.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <Link href="/blog" className="inline-flex items-center gap-1 font-medium text-accent hover:text-white">
+                Browse all articles <ArrowRight size={14} />
+              </Link>
+              <Link href="/feed.xml" className="inline-flex items-center gap-1 font-medium text-muted hover:text-white">
+                RSS feed
+              </Link>
+            </div>
+          </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {recentPosts.map((post) => (
               <article key={post.slug} className="card-hover flex h-full flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-accent/40">
@@ -128,7 +143,11 @@ export default function HomePage() {
                 <p className="text-xs text-muted">
                   {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                 </p>
-                <h3 className="mt-2 text-base font-semibold text-white">{post.title}</h3>
+                <h3 className="mt-2 text-base font-semibold text-white">
+                  <Link href={`/blog/${post.slug}`} className="hover:text-accent">
+                    {post.title}
+                  </Link>
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{post.excerpt}</p>
                 <div className="mt-auto flex items-center justify-between pt-4 text-xs text-muted">
                   <span>{post.readingTimeMinutes} min read</span>

@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import { SITE_URL } from "@/lib/portfolio-data";
+import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
+import { SITE_URL, personalInfo } from "@/lib/portfolio-data";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -30,12 +30,22 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
+    authors: [{ name: personalInfo.name, url: SITE_URL }],
+    keywords: post.tags,
     openGraph: {
       type: "article",
       url: `${SITE_URL}/blog/${post.slug}`,
       title: post.title,
       description: post.excerpt,
+      publishedTime: post.date,
+      authors: [personalInfo.name],
       images: post.coverImage ? [{ url: post.coverImage }] : undefined
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: post.coverImage ? [post.coverImage] : undefined
     }
   };
 }
@@ -44,6 +54,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const relatedPosts = getRelatedPosts(post.slug, post.tags, 3);
+  const articleUrl = `${SITE_URL}/blog/${post.slug}`;
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: personalInfo.name,
+      url: SITE_URL
+    },
+    publisher: {
+      "@type": "Person",
+      name: personalInfo.name,
+      url: SITE_URL
+    },
+    mainEntityOfPage: articleUrl,
+    url: articleUrl,
+    image: post.coverImage ? [`${SITE_URL}${post.coverImage}`] : undefined,
+    keywords: post.tags.join(", ")
+  };
 
   return (
     <>
@@ -77,9 +111,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
 
           <section className="prose prose-invert mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: post.html }} />
+
+          {relatedPosts.length > 0 && (
+            <section className="mt-10 border-t border-line pt-8">
+              <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-accent">Continue reading</p>
+                  <h2 className="mt-2 text-xl font-semibold text-white">Related engineering notes</h2>
+                </div>
+                <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-white">
+                  Browse all posts <ExternalLink size={14} />
+                </Link>
+              </div>
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {relatedPosts.map((relatedPost) => (
+                  <article key={relatedPost.slug} className="rounded-xl border border-line bg-bg/40 p-4">
+                    <p className="text-xs text-muted">
+                      {new Date(relatedPost.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                    </p>
+                    <h3 className="mt-2 text-sm font-semibold text-white">
+                      <Link href={`/blog/${relatedPost.slug}`} className="hover:text-accent">
+                        {relatedPost.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{relatedPost.excerpt}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </main>
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
     </>
   );
 }

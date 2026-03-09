@@ -7,6 +7,9 @@ export function Footer() {
       <div className="container flex flex-col items-center justify-between gap-4 text-xs text-muted sm:flex-row">
         <p>{new Date().getFullYear()} {personalInfo.name}</p>
         <div className="flex gap-5">
+          <Link href="/blog" className="hover:text-white">Blog</Link>
+          <Link href="/feed.xml" className="hover:text-white">RSS</Link>
+          <Link href="/sitemap.xml" className="hover:text-white">Sitemap</Link>
           <Link href={personalInfo.links.github} target="_blank" rel="noreferrer" className="hover:text-white">GitHub</Link>
           <Link href={personalInfo.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-white">LinkedIn</Link>
           <Link href={personalInfo.links.upwork} target="_blank" rel="noreferrer" className="hover:text-white">Upwork</Link>
