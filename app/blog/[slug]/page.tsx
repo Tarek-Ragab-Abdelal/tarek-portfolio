@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: `/blog/${post.slug}/` },
     authors: [{ name: personalInfo.name, url: SITE_URL }],
     keywords: post.tags,
     openGraph: {
       type: "article",
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}/`,
       title: post.title,
       description: post.excerpt,
       publishedTime: post.date,
@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = await getPostBySlug(slug);
   if (!post) notFound();
   const relatedPosts = getRelatedPosts(post.slug, post.tags, 3);
-  const articleUrl = `${SITE_URL}/blog/${post.slug}`;
+  const articleUrl = `${SITE_URL}/blog/${post.slug}/`;
   const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

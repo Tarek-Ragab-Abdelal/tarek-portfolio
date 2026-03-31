@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description: "Engineering notes, architecture guides, and product implementation insights by Tarek Ragab.",
   alternates: {
-    canonical: "/blog",
+    canonical: "/blog/",
     types: {
       "application/rss+xml": "/feed.xml"
     }
