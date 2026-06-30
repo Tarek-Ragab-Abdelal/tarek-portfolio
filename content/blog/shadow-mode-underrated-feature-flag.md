@@ -3,6 +3,7 @@ title: "Shadow Mode Is the Most Underrated Feature Flag"
 excerpt: "Running new logic in monitor-only mode before you enforce it lets you compare outcomes against production safely - the calmest way to ship risky changes."
 date: "2026-06-08"
 tags: ["Feature Flags", "Architecture", "Reliability", "Rollouts"]
+coverImage: "/images/blog/shadow-mode-underrated-feature-flag.jpg"
 ---
 
 The safest way I know to ship a risky change is to run it in production before it does anything. That sounds like a contradiction, but it is the whole idea behind shadow mode: you deploy the new logic, feed it real traffic, compute exactly what it would do, log that decision next to the old one, and then throw the new answer away. Nothing downstream changes. No customer is affected. But you now have a stream of real-world evidence telling you whether your rewrite is correct before you ever let it take the wheel. I have come to think of shadow mode as the most underrated flag in the toolbox, and most teams reach for it far too late.

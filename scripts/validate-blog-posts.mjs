@@ -100,6 +100,10 @@ for (const filePath of files) {
     }
   }
 
+  if (data.featured !== undefined && typeof data.featured !== "boolean") {
+    errors.push(`${relativePath}: featured must be a boolean when present.`);
+  }
+
   const sourceUrl = typeof data.sourceUrl === "string" ? data.sourceUrl.trim() : "";
   if (sourceUrl && !validateUrl(sourceUrl)) {
     errors.push(`${relativePath}: sourceUrl must be a valid http or https URL.`);

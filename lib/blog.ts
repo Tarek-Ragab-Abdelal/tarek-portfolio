@@ -16,6 +16,7 @@ export interface BlogPostMeta {
   coverImage?: string;
   sourceUrl?: string;
   readingTimeMinutes: number;
+  featured: boolean;
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -64,7 +65,8 @@ export function getAllPosts(): BlogPostMeta[] {
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         coverImage: data.coverImage ? String(data.coverImage) : undefined,
         sourceUrl: data.sourceUrl ? String(data.sourceUrl) : undefined,
-        readingTimeMinutes: estimateReadingTime(content)
+        readingTimeMinutes: estimateReadingTime(content),
+        featured: data.featured === true
       };
     })
     .filter((post): post is BlogPostMeta => post !== null)
@@ -73,6 +75,16 @@ export function getAllPosts(): BlogPostMeta[] {
 
 export function getRecentPosts(limit = 3): BlogPostMeta[] {
   return getAllPosts().slice(0, limit);
+}
+
+// Curated "best picks" for the homepage. Returns posts marked `featured: true`
+// (newest first), then backfills with the most recent non-featured posts so the
+// homepage always has `limit` cards even if nothing is flagged.
+export function getFeaturedPosts(limit = 3): BlogPostMeta[] {
+  const all = getAllPosts();
+  const featured = all.filter((post) => post.featured);
+  const rest = all.filter((post) => !post.featured);
+  return [...featured, ...rest].slice(0, limit);
 }
 
 export function getRelatedPosts(currentSlug: string, tags: string[], limit = 3): BlogPostMeta[] {
@@ -124,6 +136,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     coverImage: data.coverImage ? String(data.coverImage) : undefined,
     sourceUrl: data.sourceUrl ? String(data.sourceUrl) : undefined,
     readingTimeMinutes: estimateReadingTime(content),
+    featured: data.featured === true,
     html
   };
 }

@@ -3,6 +3,7 @@ title: 'Why "Rules Evaluated: 0" Is an Architecture Smell'
 excerpt: "Decision systems need explainability: audit logs, rule traces, and counters. When you cannot tell why the answer was what it was, that is the real bug."
 date: "2026-06-29"
 tags: ["Observability", "Architecture", "Debugging", "Systems Design"]
+coverImage: "/images/blog/rules-evaluated-zero-architecture-smell.jpg"
 ---
 
 A log line that reads `Rules evaluated: 0` is not a bug report. It is the absence of one. It tells you the engine ran and produced an outcome, but it tells you nothing about whether that outcome was correct, accidental, or catastrophic. My thesis is simple: when a decision system returns an answer and you cannot reconstruct *why*, the opacity itself is the defect. The wrong price, the unexpected block, the misrouted request, those are symptoms. The real architecture smell is that the system cannot explain itself.

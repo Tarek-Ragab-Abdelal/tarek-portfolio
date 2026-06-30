@@ -4,6 +4,7 @@ excerpt: "A practical decision framework for selecting communication protocols i
 date: "2026-03-08"
 tags: ["IoT", "Architecture", "MQTT", "WebSockets", "REST"]
 coverImage: "/images/blog/rest_vs_websockets_vs_mqtt_1200x675.jpg"
+featured: true
 ---
 
 Every IoT project eventually hits the same question: how should devices talk to the cloud, and how should the cloud talk to clients? The answer shapes your infrastructure, your latency characteristics, and your operational complexity for years. Getting it wrong early means expensive refactoring later.

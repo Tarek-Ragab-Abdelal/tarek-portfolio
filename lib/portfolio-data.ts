@@ -25,6 +25,16 @@ export interface SkillGroup {
   skills: string[];
 }
 
+export interface Review {
+  author: string;
+  role?: string;
+  content: string;
+  rating: number;
+  company?: string;
+  project?: string;
+  image?: string;
+}
+
 export const personalInfo = {
   name: "Tarek Ragab",
   title: "Full-Stack Software Engineer & Cloud Developer",
@@ -51,6 +61,7 @@ export const navLinks = [
   { label: "Skills", href: "/#skills" },
   { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/#experience" },
+  { label: "Reviews", href: "/#reviews" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" }
 ] as const;
@@ -368,6 +379,68 @@ export const experiences: ExperienceItem[] = [
       "Gained practical experience with 3D printing (FDM, SLA) and CNC machining.",
       "Built an autonomous maze-solving robot achieving 20% faster navigation than baseline models."
     ]
+  }
+];
+
+export const reviews: Review[] = [
+  {
+    author: "Casey Ryan",
+    company: "We Buy Any Vegas House",
+    content:
+      "Tarek is good at communication and planning the solution based on the situation and the requirements. Looking forward to continuing the collaboration. Hard to find talent as good as him and as competent. HIGHLY recommend.",
+    rating: 5
+  },
+  {
+    author: "Abdulrahaman Alzamil",
+    company: "Sanad Finance",
+    content:
+      "Tarek is a fantastic developer. He took on a project that grew from simple reporting into a full database migration and executed it perfectly. He managed the data mapping and scripting effortlessly, resulting in a successful launch. A pleasure to work with him.",
+    rating: 5
+  },
+  {
+    author: "Edward Don Adrenana",
+    role: "Senior Software Engineer",
+    company: "Boreal Laser Inc.",
+    project: "ESP32 Web Server for Industrial Gas Sensing",
+    content:
+      "I am thoroughly impressed with the outcome of this project and the role Tarek played in its realization. The success of our collaboration has led us to continue our professional relationship with a new venture—an app version of the web server interface. I look forward to what we will achieve with this continued partnership.",
+    rating: 5,
+    image: "/images/clients/edward.jpg"
+  },
+  {
+    author: "Chris Byard",
+    role: "CTO",
+    company: "Signal Dynamic",
+    project: "Azure Certificate Management for IoT Devices",
+    content:
+      "Tarek was great - very good and thorough communication and successfully completed the work on schedule. Will certainly use again in future.",
+    rating: 5,
+    image: "/images/clients/chris.jpg"
+  },
+  {
+    author: "Aser Nabil",
+    role: "Product Owner",
+    company: "SudoTechs",
+    content:
+      "Tarek's attention to detail and problem-solving skills are remarkable. He transformed our data processing capabilities and delivered a solution that handles 2x more data efficiently. Would definitely work with him again.",
+    rating: 5
+  },
+  {
+    author: "Seif Mostafa",
+    role: "Senior Software Engineer",
+    company: "RES-VA",
+    content:
+      "Tarek demonstrated exceptional expertise in system design and clean architecture principles. His work ensured scalability, maintainability, and performance, setting a strong foundation for our application. Highly recommend his skills.",
+    rating: 5
+  },
+  {
+    author: "Tim Ho",
+    role: "Product Owner",
+    company: "Boreal Laser Inc.",
+    project: "Desktop Licensing App",
+    content:
+      "Our experience has been immensely positive, a reflection of both the Upwork platform's efficacy and Tarek's exceptional talent and work ethic. This project exemplifies how visionary individuals can transform ideas into exemplary solutions.",
+    rating: 5
   }
 ];
 

@@ -3,6 +3,7 @@ title: "ACK, RETRY, DROP: Designing Batch APIs That Survive Bad Networks"
 excerpt: "All-or-nothing batch endpoints fail badly on mobile and event ingestion. Per-item results - acknowledge, retry, or drop - make clients resilient."
 date: "2026-06-22"
 tags: ["APIs", "Architecture", "Reliability", "SDK"]
+coverImage: "/images/blog/ack-retry-drop-batch-apis-bad-networks.jpg"
 ---
 
 If you are designing a batch endpoint - one request that carries many events or items - the single most important decision you will make is not the payload format or the compression scheme. It is what the response says about each individual item. A batch API that returns one status for the whole batch is broken by design the moment a client runs on a flaky network, and most of the clients that need batching are exactly the ones on flaky networks: mobile apps, SDKs, IoT devices, anything ingesting events over a connection that drops mid-flight. The fix is a per-item result contract with three outcomes the client can act on without guessing: ACK, RETRY, and DROP.

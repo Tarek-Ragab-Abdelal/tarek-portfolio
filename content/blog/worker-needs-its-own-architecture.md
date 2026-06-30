@@ -3,6 +3,7 @@ title: "Why Your Worker Needs Its Own Architecture, Not Just process.env.WORKER=
 excerpt: "Splitting an app into API and worker with a single env flag looks clean until idempotency, retries, poison jobs, and deploy shape force a real boundary."
 date: "2026-06-01"
 tags: ["Architecture", "Background Jobs", "Queues", "Reliability"]
+coverImage: "/images/blog/worker-needs-its-own-architecture.jpg"
 ---
 
 If you run the same codebase as both your API and your background worker, switched by a single `process.env.WORKER=true`, you do not have two services. You have one service wearing a costume. It works fine until it doesn't, and when it stops working it tends to do so in production, at 2 a.m., with a job that has retried four hundred times. I have shipped this exact pattern, watched it hold up under light load, and then watched it buckle the moment the work got real. This post is about why the env flag feels right, where it breaks, and what an actual worker architecture looks like.
