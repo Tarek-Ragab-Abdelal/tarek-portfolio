@@ -3,7 +3,7 @@ title: "How I Rebuilt My Portfolio for SEO with Next.js"
 excerpt: "Why I moved from a Vite SPA to a statically exported Next.js App Router portfolio and what changed in metadata, architecture, and content strategy."
 date: "2026-03-02"
 tags: ["Next.js", "SEO", "Architecture"]
-coverImage: "/images/hero-bg.jpg"
+coverImage: "/images/blog/how_i_rebuilt_my_portfolio_for_seo_with_nextjs_1200x675.jpg"
 ---
 
 My first portfolio was a single-page React app built with Vite. It looked decent, had smooth animations, and did everything a portfolio should do, except show up on Google. Client-side rendered SPAs have a well-known SEO problem: search engine crawlers see an empty HTML shell until JavaScript executes, and many crawlers do not wait for that. I decided to rebuild from scratch with SEO as the primary architectural driver.

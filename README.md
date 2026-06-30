@@ -41,7 +41,7 @@ Articles published on the site ([all posts](https://www.tarekragab.com/blog/)):
 
 - [How I Actually Use AI Tools as a Software Engineer](https://www.tarekragab.com/blog/ai-tools-for-software-engineers/)
 - [How I Rebuilt My Portfolio for SEO with Next.js](https://www.tarekragab.com/blog/rebuilding-my-portfolio-with-nextjs/)
-- [REST vs WebSockets vs MQTT: Choosing the Right Protocol for IoT Projects](https://www.tarekragab.com/blog/rest-vs-websockets-vs-mqtt-iot/)
+- [REST vs WebSockets vs MQTT: Choosing the Right Protocol for your Projects](https://www.tarekragab.com/blog/rest-vs-websockets-vs-mqtt-iot/)
 - [Engineering Lessons from Data and IoT Product Work](https://www.tarekragab.com/blog/engineering-lessons-from-data-and-iot-projects/)
 - [Design Patterns in Embedded Development: A Practical Approach](https://www.tarekragab.com/blog/design-patterns-in-embedded-development-practical-approach/)
 - [C++ Project Template with CMake and VSCode](https://www.tarekragab.com/blog/cpp-project-template-cmake-vscode/)
