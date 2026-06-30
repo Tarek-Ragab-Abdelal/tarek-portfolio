@@ -1,8 +1,9 @@
 ---
-title: "REST vs WebSockets vs MQTT: Choosing the Right Protocol for IoT Projects"
+title: "REST vs WebSockets vs MQTT: Choosing the Right Protocol for your Projects"
 excerpt: "A practical decision framework for selecting communication protocols in IoT systems, based on real project trade-offs across latency, reliability, and infrastructure complexity."
 date: "2026-03-08"
 tags: ["IoT", "Architecture", "MQTT", "WebSockets", "REST"]
+coverImage: "/images/blog/rest_vs_websockets_vs_mqtt_1200x675.jpg"
 ---
 
 Every IoT project eventually hits the same question: how should devices talk to the cloud, and how should the cloud talk to clients? The answer shapes your infrastructure, your latency characteristics, and your operational complexity for years. Getting it wrong early means expensive refactoring later.
@@ -16,11 +17,13 @@ I have worked across enough IoT and data projects to have made mistakes with all
 REST is stateless request-response. A client sends a request, a server sends a response, the connection closes. Simple, well-understood, and supported everywhere.
 
 Where it works in IoT:
+
 - **Device provisioning and configuration**: a device registers itself, fetches its configuration, or updates its firmware. These are infrequent, latency-tolerant operations where REST is ideal.
 - **Command dispatch when polling is acceptable**: if a device checks in every 30 seconds and asks "do I have any pending commands?", REST works fine.
 - **Dashboard data queries**: a browser asking for aggregated sensor history over the last 24 hours is a classic REST use case.
 
 Where it fails:
+
 - **Real-time data streaming**: polling every second is not real-time. It is expensive, introduces latency, and does not scale.
 - **Constrained devices**: HTTP headers, TLS handshakes, and TCP connection overhead are significant on microcontrollers with 256KB of RAM. Each connection costs memory and CPU cycles you may not have.
 
@@ -29,11 +32,13 @@ Where it fails:
 WebSockets establish a persistent, bidirectional TCP connection. Once the handshake completes, both sides can push messages to each other at any time without the overhead of a new connection per message.
 
 Where it works in IoT:
+
 - **Browser dashboards with live data**: a web client displaying real-time sensor readings is the canonical WebSocket use case. The server pushes new readings as they arrive; the browser renders them instantly.
 - **Interactive device control with low latency**: if an operator needs to send commands and see immediate feedback, WebSockets provide the round-trip response time that REST polling cannot match.
 - **Notification delivery**: pushing alerts to a browser or desktop client when a threshold is crossed.
 
 Where it fails:
+
 - **Unreliable networks**: WebSockets assume a stable TCP connection. On a device connected over cellular or a flaky Wi-Fi link, the connection drops frequently. Every drop requires a full reconnect and re-handshake, which consumes bandwidth and battery.
 - **Many concurrent devices**: maintaining thousands of persistent WebSocket connections on a server is resource-intensive. You pay the connection cost even when devices are idle.
 - **Constrained devices**: WebSockets are TCP-based and require the same connection overhead as HTTP. Not suitable for devices where power consumption and memory are tightly constrained.
@@ -43,12 +48,14 @@ Where it fails:
 MQTT is a publish-subscribe protocol designed specifically for constrained devices and unreliable networks. Devices publish messages to topics. A broker receives and routes messages to subscribers. The connection is persistent but lightweight, with a minimal binary header.
 
 Where it works in IoT:
+
 - **High-frequency sensor telemetry**: a sensor publishing temperature every 500ms over MQTT adds negligible overhead per message. The same pattern over REST would be unusable at scale.
 - **Unreliable networks**: MQTT has built-in Quality of Service levels. QoS 1 guarantees at-least-once delivery with automatic retransmission. QoS 2 guarantees exactly-once delivery. These are protocol-level features, not application-level workarounds.
 - **Battery-powered devices**: MQTT supports a Last Will and Testament message (automatically sent if a device disconnects unexpectedly) and a keep-alive mechanism. Both are designed for intermittent connectivity.
 - **Fan-out and multi-consumer architectures**: one device publishes to a topic; multiple consumers subscribe. Adding a new consumer requires zero changes to the device or the existing consumers.
 
 Where it fails:
+
 - **Browser clients**: browsers cannot open raw TCP connections. To use MQTT in a browser, you need MQTT over WebSockets, which adds complexity and partially negates the protocol's overhead advantages.
 - **Request-response patterns**: MQTT is fundamentally publish-subscribe. Implementing request-response requires topic conventions and correlation IDs. It is doable but awkward compared to REST.
 - **Operational simplicity**: you need to run a broker (Mosquitto, HiveMQ, AWS IoT Core, Azure IoT Hub). This is additional infrastructure to manage.

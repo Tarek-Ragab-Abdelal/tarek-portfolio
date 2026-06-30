@@ -3,7 +3,7 @@ title: "Engineering Lessons from Data and IoT Product Work"
 excerpt: "Three practical patterns I keep applying across analytics systems, cloud workflows, and embedded integrations."
 date: "2026-02-10"
 tags: ["Data Engineering", "IoT", "Delivery"]
-coverImage: "/images/blog/iot-solution-design-auc.jpg"
+coverImage: "/images/blog/engineering_lessons_from_data_and_iot_product_work_1200x675.jpg"
 ---
 
 After four years of building data pipelines, IoT firmware, reporting platforms, and cloud automation workflows, I have noticed that the same handful of engineering patterns keep determining whether a project ships smoothly or turns into a firefighting exercise. These are not theoretical best practices. They are patterns I have adopted because ignoring them cost me real time and energy on past projects.

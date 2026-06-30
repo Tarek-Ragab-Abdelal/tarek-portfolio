@@ -248,6 +248,19 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const experiences: ExperienceItem[] = [
   {
+    role: "Software Engineer (Part-time)",
+    company: "White Space Solutions",
+    link: "https://www.whitespacesolutions.ai/",
+    period: "Apr 2026 - Present",
+    highlights: [
+      "Initiating and maintaining AI-based automation pipelines.",
+      "Building web-based applications.",
+      "Participating in business and product requirements.",
+      "Contributing to system design and CI/CD pipelines.",
+      "Coordinating with clients on system features and requirements."
+    ]
+  },
+  {
     role: "Senior Software Engineer",
     company: "Limaz Inc.",
     link: "https://limaz.co/",
@@ -257,6 +270,19 @@ export const experiences: ExperienceItem[] = [
       "Implemented CI/CD pipelines with GitHub Actions, reducing deployment time by 90%.",
       "Collaborated on product design to align technical solutions with business goals.",
       "Mentored junior engineers and established coding standards to improve code quality."
+    ]
+  },
+  {
+    role: "AI Automation Engineer (Freelance)",
+    company: "We Buy Any Vegas House",
+    link: "https://webuyanyvegashouse.com/",
+    period: "Nov 2025 - Apr 2026",
+    highlights: [
+      "Architected and deployed custom n8n nodes to bridge complex data gaps between REST APIs and enterprise platforms.",
+      "Led the full-scale migration of legacy workflows from Zapier and Make.com to n8n, improving system reliability and reducing technical debt.",
+      "Engineered modular, high-performance automation frameworks ensuring clean, maintainable, and scalable backend structures.",
+      "Integrated cross-platform ecosystems, including WordPress/Gravity Forms and Podio, to automate mission-critical business processes.",
+      "Optimized API data flows by implementing advanced error handling, rate-limit management, and rigorous validation protocols."
     ]
   },
   {
@@ -365,6 +391,10 @@ export const skillGroups: SkillGroup[] = [
   {
     name: "Embedded & IoT",
     skills: ["ESP32", "STM32", "C++", "MQTT", "OTA Updates", "Secure Firmware", "Device Provisioning"]
+  },
+  {
+    name: "AI & Automation",
+    skills: ["AI Automation", "n8n", "Zapier", "Make.com", "Custom n8n Nodes", "Webhooks", "WordPress", "Gravity Forms", "Podio"]
   },
   {
     name: "Version Control & CI/CD",

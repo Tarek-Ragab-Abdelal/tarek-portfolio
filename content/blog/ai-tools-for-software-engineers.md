@@ -3,6 +3,7 @@ title: "How I Actually Use AI Tools as a Software Engineer"
 excerpt: "A practical breakdown of where AI tools genuinely help in day-to-day engineering work, where they fall short, and how to use them without losing your edge."
 date: "2026-03-01"
 tags: ["AI", "Productivity", "Software Engineering", "Tools"]
+coverImage: "/images/blog/how_i_actually_use_ai_tools_as_a_software_engineer_1200x675.jpg"
 ---
 
 There is a lot of noise around AI tools for developers right now. Some people treat them as the end of programming. Others dismiss them entirely. After using tools like Claude, GitHub Copilot, and ChatGPT daily across real projects for over a year, my take is more nuanced: AI tools are genuinely useful, but only if you understand what they are good at, what they are bad at, and how to integrate them without becoming dependent.
