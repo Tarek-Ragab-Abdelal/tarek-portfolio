@@ -3,6 +3,7 @@ title: "Idempotency Keys Are Not Just for Payments"
 excerpt: "External event ingestion, retries, and duplicate submissions all need idempotency. Here is how to design the keys, the storage, and the race handling."
 date: "2026-06-15"
 tags: ["APIs", "Idempotency", "Reliability", "Architecture"]
+coverImage: "/images/blog/idempotency-keys-not-just-for-payments.jpg"
 ---
 
 Most engineers I talk to first encounter idempotency keys through Stripe's API, and they walk away with the wrong lesson: that idempotency is a payments thing, a special precaution you take when money is on the line. It is not. Idempotency is a general property you want on any operation that can be retried or delivered more than once, which in a distributed system is almost everything. If your service ingests external events, consumes from a queue, receives webhooks, or just serves a form that a human can submit twice, you have a duplicates problem whether you have noticed it or not. The good news is that the same small pattern solves all of these, and it is not complicated once you see where the duplicates actually come from.

@@ -8,11 +8,12 @@ import { SkillLab } from "@/components/site/skill-lab";
 import { HeroSection } from "@/components/site/hero-section";
 import { ExperienceTimeline } from "@/components/site/experience-timeline";
 import { SectionConnector, SectionDot } from "@/components/site/section-thread";
-import { getRecentPosts } from "@/lib/blog";
-import { experiences, featuredProjects, personalInfo, skillGroups } from "@/lib/portfolio-data";
+import { getFeaturedPosts } from "@/lib/blog";
+import { ReviewsSection } from "@/components/site/reviews-section";
+import { experiences, featuredProjects, personalInfo, reviews, skillGroups } from "@/lib/portfolio-data";
 
 export default function HomePage() {
-  const recentPosts = getRecentPosts(3);
+  const recentPosts = getFeaturedPosts(3);
   const contactChannels = [
     {
       label: "Email",
@@ -108,6 +109,21 @@ export default function HomePage() {
           <p className="text-xs font-medium uppercase tracking-widest text-accent">Experience</p>
           <h2 className="mt-2 mb-10 text-2xl font-bold text-white md:text-3xl">Recent roles & execution scope</h2>
           <ExperienceTimeline experiences={experiences} />
+        </section>
+
+        <SectionConnector />
+        <SectionDot />
+
+        {/* Reviews */}
+        <section id="reviews" className="container py-16">
+          <p className="text-xs font-medium uppercase tracking-widest text-accent">Reviews</p>
+          <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">What clients say</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+            Feedback from clients and collaborators across Upwork engagements, IoT products, and platform work.
+          </p>
+          <div className="mt-8">
+            <ReviewsSection reviews={reviews} />
+          </div>
         </section>
 
         <SectionConnector />

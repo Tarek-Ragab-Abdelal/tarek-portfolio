@@ -3,6 +3,8 @@ title: 'Why "Tenant ID Everywhere" Is Not Enough for Multi-Tenant Isolation'
 excerpt: "Adding a tenantId column is the easy part. The real isolation bugs hide in auth context, API keys, background jobs, queues, webhooks, and admin bypasses."
 date: "2026-05-25"
 tags: ["Multi-Tenancy", "Architecture", "Security", "SaaS"]
+coverImage: "/images/blog/multi-tenant-isolation-tenant-id-not-enough.jpg"
+featured: true
 ---
 
 Every multi-tenant system I have worked on hit the same milestone and mistook it for the finish line: someone added a `tenantId` column to every table, wired a `WHERE tenant_id = ?` into the main query path, and declared isolation "done." It is not done. The column is the easy 20%. The isolation bugs that actually leak one customer's data into another customer's account live everywhere the `tenantId` is *not* automatically present: the request that never had a session, the job that ran an hour after the user logged out, the admin tool built to ignore filters on purpose. This post is about those places, with a concrete way each one breaks and the fix I now reach for by default.
