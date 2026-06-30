@@ -37,12 +37,24 @@ function getMarkdownFiles(): string[] {
     .filter((fileName) => fileName.endsWith(".md"));
 }
 
+// A markdown file is a publishable post only if it satisfies the frontmatter
+// contract documented in content/blog/AGENTS.md: it must declare a title and a
+// date. This keeps non-post docs dropped into the folder (AGENTS.md, codex.md)
+// out of the blog list, the sitemap, and the static route table.
+function isPublishablePost(data: { [key: string]: unknown }): boolean {
+  return Boolean(data.title) && Boolean(data.date);
+}
+
 export function getAllPosts(): BlogPostMeta[] {
   return getMarkdownFiles()
-    .map((fileName) => {
+    .map((fileName): BlogPostMeta | null => {
       const slug = fileName.replace(/\.md$/, "");
       const raw = fs.readFileSync(path.join(BLOG_DIRECTORY, fileName), "utf8");
       const { data, content } = matter(raw);
+
+      if (!isPublishablePost(data)) {
+        return null;
+      }
 
       return {
         slug,
@@ -55,6 +67,7 @@ export function getAllPosts(): BlogPostMeta[] {
         readingTimeMinutes: estimateReadingTime(content)
       };
     })
+    .filter((post): post is BlogPostMeta => post !== null)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -89,6 +102,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
   const raw = fs.readFileSync(postPath, "utf8");
   const { data, content } = matter(raw);
+
+  if (!isPublishablePost(data)) {
+    return null;
+  }
 
   const processed = await remark().use(remarkGfm).use(remarkHtml).process(content);
   let html = String(processed);
